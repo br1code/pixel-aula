@@ -1,4 +1,4 @@
-# de-tarea-juga
+# Pixel Aula
 
 #### Proyecto de Práctica Profesionalizante de la carrera de Desarrollo de Software que se presentará en EduFest 2018.
 
