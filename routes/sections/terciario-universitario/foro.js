@@ -21,6 +21,10 @@ router.post('/foro/nuevo', (req, res) => {
     res.redirect('/terciario-universitario/foro/nuevo_exito');
 });
 
+router.get('/foro/nuevo_exito', (req, res) => {
+    res.render('./sections/terciario-universitario/foro/success');
+});
+
 // SHOW - Show more info about one topic
 router.get('/foro/:id', (req, res) => {
     // find the topic by id
