@@ -1,6 +1,8 @@
 'use strict';
 
-const express                               = require('express');
+const express                               = require('express'),
+    mongoose                                = require('mongoose');
+
 
 // Routes
 const indexRoutes                           = require('./routes/index');
@@ -16,6 +18,7 @@ const app = express();
 // CONFIG -----------------------------------------------
 
 // MongoDB configuration
+mongoose.connect('mongodb://localhost/pixelaula', { useNewUrlParser: true});
 
 // Express configuration
 app.set('view engine', 'ejs');
