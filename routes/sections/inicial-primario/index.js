@@ -5,8 +5,8 @@ const express = require('express');
 const router = express.Router();
 
 // INDEX - Show index page
-router.get('/inicial', (req, res) => {
-    res.render('./sections/inicial');
+router.get('/inicial-primario', (req, res) => {
+    res.render('./sections/inicial-primario');
 });
 
 module.exports = router;

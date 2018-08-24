@@ -1,13 +1,13 @@
 'use strict';
 
-const express               = require('express');
+const express                               = require('express');
 
 // Routes
-const indexRoutes           = require('./routes/index');
-const inicialRoutes         = require('./routes/sections/inicial');
-const primarioRoutes        = require('./routes/sections/primario');
-const tecnicoRoutes         = require('./routes/sections/tecnico');
-const superiorRoutes        = require('./routes/sections/superior');
+const indexRoutes                           = require('./routes/index');
+const inicialPrimarioRoutes                 = require('./routes/sections/inicial-primario');
+const secundarioTecnicoRoutes               = require('./routes/sections/secundario-tecnico');
+const terciarioUniversitarioRoutes          = require('./routes/sections/terciario-universitario');
+const practicasProfesionalizantesRoutes     = require('./routes/sections/practicas-profesionalizantes');
 
 const PORT = process.env.PORT || 3000;
 
@@ -26,10 +26,10 @@ app.use(express.static(__dirname + '/public'));
 
 // Routes configuration
 app.use(indexRoutes);
-app.use(inicialRoutes);
-app.use(primarioRoutes);
-app.use(tecnicoRoutes);
-app.use(superiorRoutes);
+app.use(inicialPrimarioRoutes);
+app.use(secundarioTecnicoRoutes);
+app.use(terciarioUniversitarioRoutes);
+app.use(practicasProfesionalizantesRoutes);
 
 // Handling missed/wrong page
 app.get('*', (req, res) => {
