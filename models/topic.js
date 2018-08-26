@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 let topicSchema = new mongoose.Schema({
     title: String,
+    description: String,
     date: String,
     author: {
         name: String,
