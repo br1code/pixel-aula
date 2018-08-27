@@ -48,6 +48,6 @@ jQuery.fn.addHidden = function (name, value) {
 
 form.on('submit', function(e) {
     for (let i = 0; i < tagsSelected.length; i++) {
-        form.addHidden('tags['+ i + ']', tagsSelected[i]);
+        form.addHidden('topic[tags]['+ i + ']', tagsSelected[i]);
     }
 });

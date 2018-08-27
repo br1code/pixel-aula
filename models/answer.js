@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 let answerSchema = new mongoose.Schema({
     body: String,
-    Date: String
+    date: String
 });
 
 let answerModel = mongoose.model('Answer', answerModel);

@@ -4,16 +4,9 @@ let topicSchema = new mongoose.Schema({
     title: String,
     description: String,
     date: String,
-    author: {
-        name: String,
-        institution: String
-    },
-    tags: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Tag"
-        }
-    ],
+    tags: [{
+        type: String
+    }],
     answers: [
         {
             type: mongoose.Schema.Types.ObjectId,

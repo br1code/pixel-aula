@@ -1,7 +1,9 @@
 'use strict';
 
 const express               = require('express'),
-    moment                  = require('moment');
+    moment                  = require('moment'),
+    Topic                   = require('../../../models/topic'),
+    Answer                  = require('../../../models/topic');
 
 const router = express.Router();
 
@@ -17,13 +19,19 @@ router.get('/foro/nuevo', (req, res) => {
 
 // CREATE - Send the request to create a new topic
 router.post('/foro/nuevo', (req, res) => {
-    // logic for send the email with the new topic
     let newTopic = {
-        name: req.body.name,
-        description: req.body.description
+        name: req.body.topic.name,
+        description: req.body.topic.description,
+        date: moment().calendar(),
+        tags: req.body.topic.tags
     };
-    console.log(req.body);
-    res.redirect('/foro/nuevo_exito');
+    Topic.create(newTopic, (err, topic) => {
+        if (err) {
+            console.log('Error: ' + err);
+            return res.redirect('/foro/nuevo');
+        }
+        res.redirect('/foro/nuevo_exito');
+    });
 });
 
 router.get('/foro/nuevo_exito', (req, res) => {
@@ -32,17 +40,38 @@ router.get('/foro/nuevo_exito', (req, res) => {
 
 // SHOW - Show more info about one topic
 router.get('/foro/:id', (req, res) => {
-    // find the topic by id
-    // populate the answers
-    // render the view
-    res.render('/sections/foro/show');
+    Topic.findById(req.params.id)
+        .populate('answers')
+        .exec((err, topic) => {
+            if (err || !topic) {
+                console.log('Error: ' + err);
+                return res.redirect('/foro');
+            }
+            res.render('/foro/show', {topic});
+        })
 });
 
 // CREATE - Add new answer to a particular topic
 router.post('/foro/:id/respuesta', (req, res) => {
-    // find the topic by id
-    // then create the answer and add it to the db
-    // redirect to the topic
+    Topic.findById(req.params.id, (err, topic) => {
+        if (err || !topic) {
+            console.log('Error: ' + err);
+            return res.redirect('/foro');
+        }
+        Answer.create(req.body.answer, (err, answer) => {
+            if (err) {
+                console.log('Error: ' + err);
+                return res.redirect('/foro/' + req.params.id);
+            }
+            // add extra data to the new answer and save
+            answer.date = moment().calendar();
+            answer.save();
+            // add new answer to the topic and save
+            topic.answers.push(answer);
+            topic.save();
+            res.redirect('/foro/' + req.params.id);
+        });
+    });
 });
 
 module.exports = router;
