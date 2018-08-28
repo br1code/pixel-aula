@@ -3,14 +3,10 @@ const mongoose = require('mongoose');
 let topicSchema = new mongoose.Schema({
     title: String,
     description: String,
-    date: String,
-    tags: [{
-        type: String
-    }],
-    answers: [
+    threads: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Answer"
+            ref: 'Thread'
         }
     ]
 });
