@@ -10,7 +10,15 @@ const router = express.Router();
 
 // GET - Index del foro, muestra todos los topics y un link para proponer uno nuevo
 router.get('/foro', (req, res) => {
-    res.render('./sections/foro');
+    Topic.find({}, (err, topics) => {
+        if (err) {
+            // TODO: Handle error properly
+            console.log('Error: ' + err);
+            return res.render('./sections/foro');
+        }
+
+        res.render('./sections/foro', {topics});
+    });
 });
 
 // GET - Formulario para proponer un nuevo topic
@@ -21,12 +29,20 @@ router.get('/foro/nuevo', (req, res) => {
 // POST - Envia la solicitud del nuevo topic y redirecciona a /foro/nuevo-exito
 router.post('/foro/nuevo', (req, res) => {
     let newTopic = {
-        title: req.body.topic.name,
+        title: req.body.topic.title,
         description: req.body.topic.description
     };
     console.log('Sending email with the topic to create..');
     console.log(JSON.stringify(newTopic, null, 1));
-    res.redirect('/foro/nuevo-exito');
+    Topic.create(newTopic, (err, topic) => {
+        if (err) {
+            // TODO: Handle error properly
+            console.log('Error: ' + err);
+            return res.redirect('/foro/nuevo');
+        }
+
+        res.redirect('/foro/' + topic._id);
+    });
 });
 
 // GET - Muestra un mensaje indicando que el tema será aprobado o no en 24 hs

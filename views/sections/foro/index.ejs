@@ -1,7 +1,44 @@
 <% include ../../partials/header %>
 
-<h1>Foro!</h1>
 
-<a href="/foro/nuevo">Propone un nuevo tema!</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron text-center">
+                <h1 class="display-3 mb-3">Bienvenido al Foro de PixelAula</h1>
+                <p class="lead">Es un foro dirigido a discusiones de temas académicos de nivel superior y universitario.</p>
+                <hr class="my-3">
+                <p class="mt-3">Puedes proponer tus propios temas de discusión</p>
+                <p class="lead">
+                    <a class="btn btn-danger btn-lg" href="/foro/nuevo">Nuevo Tema</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h2 class="display-5 text-center">Buscar temas</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nombre o Etiqueta">
+                <small class="form-text text-muted">Busca el tema por nombre o etiqueta</small>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <% topics.forEach(topic => { %>
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <h2 class="card-title"><%= topic.title %></h2>
+                            <h6 class="card-subtitle mb-2">Subtemas creados: <%= topic.threads.length %></h6>
+                            <p class="card-text"><%= topic.description %></p>
+                            <a href="/foro/<%= topic._id %>" class="card-link">Ingresar</a>
+                            <a href="/foro/<%= topic._id %>/nuevo" class="card-link float-right">Agregar Subtema</a>
+                        </div>
+                    </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
 
 <% include ../../partials/footer %>
