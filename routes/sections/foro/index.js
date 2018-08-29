@@ -28,13 +28,9 @@ router.get('/foro/nuevo', (req, res) => {
 
 // POST - Envia la solicitud del nuevo topic y redirecciona a /foro/nuevo-exito
 router.post('/foro/nuevo', (req, res) => {
-    let newTopic = {
-        title: req.body.topic.title,
-        description: req.body.topic.description
-    };
     console.log('Sending email with the topic to create..');
-    console.log(JSON.stringify(newTopic, null, 1));
-    Topic.create(newTopic, (err, topic) => {
+    console.log(JSON.stringify(req.body.topic, null, 1));
+    Topic.create(req.body.topic, (err, topic) => {
         if (err) {
             // TODO: Handle error properly
             console.log('Error: ' + err);
