@@ -30,7 +30,12 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <h2 class="card-title"><%= topic.title %></h2>
-                            <h6 class="card-subtitle mb-2">Subtemas creados: <%= topic.threads.length %></h6>
+                            <h6 class="card-subtitle mb-2">
+                                Subtemas creados: <%= topic.threads.length %>
+                                <% topic.tags.forEach(tag => { %>
+                                    <span style='margin: auto .10rem;' class='badge float-right'><%= tag %></span>
+                                <% }) %>
+                            </h6>
                             <p class="card-text"><%= topic.description %></p>
                             <a href="/foro/<%= topic._id %>" class="card-link">Ingresar</a>
                             <a href="/foro/<%= topic._id %>/nuevo" class="card-link float-right">Agregar Subtema</a>
@@ -40,5 +45,6 @@
         </div>
     </div>
 </div>
-
+<% include ../../partials/scripts %>
+<script src="/js/indexForo.js"></script>
 <% include ../../partials/footer %>
