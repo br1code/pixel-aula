@@ -28,13 +28,7 @@ router.get('/foro/nuevo', (req, res) => {
 
 // POST - Envia la solicitud del nuevo topic y redirecciona a /foro/nuevo-exito
 router.post('/foro/nuevo', (req, res) => {
-    let newTopic = {
-        title: req.body.topic.title,
-        description: req.body.topic.description
-    };
-    console.log('Sending email with the topic to create..');
-    console.log(JSON.stringify(newTopic, null, 1));
-    Topic.create(newTopic, (err, topic) => {
+    Topic.create(req.body.topic, (err, topic) => {
         if (err) {
             // TODO: Handle error properly
             console.log('Error: ' + err);
@@ -62,7 +56,7 @@ router.get('/foro/:topicId', (req, res) => {
             }
 
             res.render('./sections/foro/topic', {topic});
-        })
+        });
 });
 
 // GET - Formulario para crear un nuevo thread para el topic actual
