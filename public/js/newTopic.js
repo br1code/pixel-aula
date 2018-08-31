@@ -1,66 +1,63 @@
 "use strict";
 
-let badges = {
-    Superior: 'primary',
-    Universitario: 'success',
-    Consultas: 'danger',
-    Noticias: 'warning',
-    Discusión: 'info',
-    Otros: 'dark',
-    Default: 'primary'
-};
+(function() {
 
-
-var form = $('#myForm');
-var tagSelect = $('#tags');
-var tagList = $('#tagList');
-
-
-tagSelect.on('change', function() {
-    let tagNameSelected = $(this).val();
-    if (getTagsSelected().indexOf(tagNameSelected) != -1) {
-        return;
+    // add hidden inputs with a name-value pair to send extra data
+    function addHidden(form, name, value) {
+        let input = $("<input>").attr("type", "hidden").attr("name", name).val(value);
+        form.append($(input));
     }
-    let badgeClass = selectBadgeClass(tagNameSelected);
-    let spanTag = "<span style='margin: auto .10rem;' class='badge badge-" + badgeClass + "'>" + tagNameSelected + "</span>";
-    tagList.append(spanTag);
-    updateDeleteTagEvent();
-});
-
-function selectBadgeClass(tagNameSelected) {
-    if (badges[tagNameSelected]) {
-        return badges[tagNameSelected];
+    
+    function selectBadgeClass(tagNameSelected) {
+        let badges = {
+            Superior: 'primary',
+            Universitario: 'success',
+            Consultas: 'danger',
+            Noticias: 'warning',
+            Discusión: 'info',
+            Otros: 'dark',
+            Default: 'primary'
+        };
+        return badges[tagNameSelected] || badges.Default;
     }
-    return badges.Default;
-}
-
-function updateDeleteTagEvent() {
-    let currentTags = $('.badge');
-    currentTags.off('click');
-    currentTags.on('click', function(e) {
-        $(this).remove();
-    });
-}
-
-jQuery.fn.addHidden = function (name, value) {
-    return this.each(function () {
-        var input = $("<input>").attr("type", "hidden").attr("name", name).val(value);
-        $(this).append($(input));
-    });
-};
-
-form.on('submit', function(e) {
-    let tagsSelected = getTagsSelected();
-    for (let i = 0; i < tagsSelected.length; i++) {
-        form.addHidden('topic[tags]['+ i + ']', tagsSelected[i]);
+    
+    function getTagsSelected() {
+        let tagsSelected = [];
+        let currentTags = $('.badge');
+        currentTags.each(function() {
+            tagsSelected.push($(this).text());
+        });
+        return tagsSelected;
     }
-});
+    
+    function addDeleteTagEvents() {
+        let currentTags = $('.badge');
+        // prevent duplicate events
+        currentTags.off('click');
+        currentTags.on('click', function(e) {
+            $(this).remove();
+        });
+    }
 
-function getTagsSelected() {
-    let currentTags = $('.badge');
-    let tagsSelected = [];
-    currentTags.each(function() {
-        tagsSelected.push($(this).text());
+    // create selected tags with its appropriate color
+    $('#tags').on('change', function() {
+        let tagNameSelected = $(this).val();
+
+        // prevent duplicate tags
+        if (getTagsSelected().indexOf(tagNameSelected) != -1) return;
+
+        let badgeClass = selectBadgeClass(tagNameSelected);
+        let spanTag = `<span style='margin: auto .10rem;' class='badge badge-${badgeClass}'>${tagNameSelected}</span>`;
+        $('#tagList').append(spanTag);
+        addDeleteTagEvents();
     });
-    return tagsSelected;
-}
+    
+    // add hidden inputs to send the selected tags with the form
+    $('#myForm').on('submit', function(e) {
+        let tagsSelected = getTagsSelected();
+        for (let i = 0; i < tagsSelected.length; i++) {
+            addHidden($(this), 'topic[tags]['+ i + ']', tagsSelected[i]);
+        }
+    });
+    
+})();

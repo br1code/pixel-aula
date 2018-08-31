@@ -21,13 +21,13 @@
         <div class="col-md-4 text-center">
             <h2 class="display-5 text-center">Buscar temas</h2>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Nombre o Etiqueta">
-                <small class="form-text text-muted">Busca el tema por nombre o etiqueta</small>
+                <input type="text" id="search" class="form-control" placeholder="Nombre o Etiqueta">
+                <small class="form-text text-muted">Busca el tema por su contenido o sus etiquetas</small>
             </div>
         </div>
         <div class="col-md-8">
             <% topics.forEach(topic => { %>
-                    <div class="card my-3">
+                    <div class="card my-3" fulldata="<%= topic.title %> <%= topic.description %> <%= topic.tags.join(' ') %>">
                         <div class="card-body">
                             <h2 class="card-title"><%= topic.title %></h2>
                             <h6 class="card-subtitle mb-2">
