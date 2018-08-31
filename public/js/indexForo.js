@@ -1,19 +1,26 @@
-let badgesClasses = ['primary', 'success', 'danger', 'warning', 'info', 'dark'];
+"use strict";
 
-let tagIndex = 0;
+let badges = {
+    Superior: 'primary',
+    Universitario: 'success',
+    Consultas: 'danger',
+    Noticias: 'warning',
+    Discusión: 'info',
+    Otros: 'dark',
+    Default: 'primary'
+};
 
-function selectBadgeClass() {
-    if (!badgesClasses[tagIndex]) {
-        tagIndex = 0;
+function selectBadgeClass(tagNameSelected) {
+    if (badges[tagNameSelected]) {
+        return badges[tagNameSelected];
     }
-    return badgesClasses[tagIndex];
+    return badges.Default;
 }
-
 
 $(document).ready(function() {
     $('.badge').each(function() {
-        let badgeClass = "badge-" + selectBadgeClass();
+        let tagNameSelected = $(this).text();
+        let badgeClass = "badge-" + selectBadgeClass(tagNameSelected);
         $(this).addClass(badgeClass);
-        tagIndex++;
     });
 });

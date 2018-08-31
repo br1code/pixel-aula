@@ -1,4 +1,4 @@
-let badgesClasses = ['primary', 'success', 'danger', 'warning', 'info', 'dark'];
+"use strict";
 
 let badges = {
     Superior: 'primary',
