@@ -1,18 +1,6 @@
 "use strict";
 
 (function() {
-    function selectBadgeClass(tagNameSelected) {
-        let badges = {
-            Superior: 'primary',
-            Universitario: 'success',
-            Consultas: 'danger',
-            Noticias: 'warning',
-            Discusión: 'info',
-            Otros: 'dark',
-            Default: 'primary'
-        };
-        return badges[tagNameSelected] || badges.Default;
-    }
     
     function haveCoincidences(strA, strB) {
         return strA.indexOf(strB) !== -1;
@@ -29,9 +17,7 @@
     
     $(document).ready(function() {
         $('.badge').each(function() {
-            let tagNameSelected = $(this).text();
-            let badgeClass = "badge-" + selectBadgeClass(tagNameSelected);
-            $(this).addClass(badgeClass);
+            $(this).addClass("badge-danger");
         });
     });
     
@@ -43,8 +29,8 @@
         // prevent filter without any search
         if (!textSearch) return topics.show();
         
-        let topics = $('.card');
-        topics.each(function() {
+        // filter each topic to show or hide
+        $('.card').each(function() {
             let topicData = getCleanedString($(this).attr('fullData'));
             if (haveCoincidences(topicData, textSearch)) {
                 $(this).show();

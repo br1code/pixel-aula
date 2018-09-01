@@ -35,7 +35,7 @@ router.post('/foro/nuevo', (req, res) => {
             return res.redirect('/foro/nuevo');
         }
 
-        res.redirect('/foro/' + topic._id);
+        res.redirect('/foro/nuevo-exito');
     });
 });
 

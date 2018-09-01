@@ -9,15 +9,8 @@
     }
     
     function selectBadgeClass(tagNameSelected) {
-        let badges = {
-            Superior: 'primary',
-            Universitario: 'success',
-            Consultas: 'danger',
-            Noticias: 'warning',
-            Discusión: 'info',
-            Otros: 'dark',
-            Default: 'primary'
-        };
+        let badges = {Superior: 'primary', Universitario: 'success', Consultas: 'danger',
+            Noticias: 'warning', Discusión: 'info', Otros: 'dark', Default: 'primary'};
         return badges[tagNameSelected] || badges.Default;
     }
     
@@ -39,15 +32,20 @@
         });
     }
 
+    function tagWasAlreadySelected(tagList, tagSelected) {
+        return tagList.indexOf(tagSelected) !== -1;
+    }
+
     // create selected tags with its appropriate color
     $('#tags').on('change', function() {
-        let tagNameSelected = $(this).val();
+        let currentTagSelected = $(this).val();
+        let tagsSelected = getTagsSelected();
 
         // prevent duplicate tags
-        if (getTagsSelected().indexOf(tagNameSelected) != -1) return;
+        if (tagWasAlreadySelected(tagsSelected, currentTagSelected)) return;
 
-        let badgeClass = selectBadgeClass(tagNameSelected);
-        let spanTag = `<span style='margin: auto .10rem;' class='badge badge-${badgeClass}'>${tagNameSelected}</span>`;
+        let badgeClass = selectBadgeClass(currentTagSelected);
+        let spanTag = `<span style='margin: auto .10rem;' class='badge badge-${badgeClass}'>${currentTagSelected}</span>`;
         $('#tagList').append(spanTag);
         addDeleteTagEvents();
     });
@@ -56,7 +54,7 @@
     $('#myForm').on('submit', function(e) {
         let tagsSelected = getTagsSelected();
         for (let i = 0; i < tagsSelected.length; i++) {
-            addHidden($(this), 'topic[tags]['+ i + ']', tagsSelected[i]);
+            addHidden($(this), `topic[tags][${i}]`, tagsSelected[i]);
         }
     });
     

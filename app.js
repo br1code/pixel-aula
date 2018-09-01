@@ -40,7 +40,7 @@ app.use(foroRoutes);
 
 // Handling missed/wrong page
 app.get('*', (req, res) => {
-    res.redirect('/');
+    res.render('error');
 });
 
 // Server listening
