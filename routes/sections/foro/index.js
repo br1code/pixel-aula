@@ -8,6 +8,8 @@ const express               = require('express'),
 
 const router = express.Router();
 
+moment.locale('es');
+
 // GET - Index del foro, muestra todos los topics y un link para proponer uno nuevo
 router.get('/foro', (req, res) => {
     Topic.find({}, (err, topics) => {
@@ -61,7 +63,7 @@ router.get('/foro/:topicId', (req, res) => {
 
 // GET - Formulario para crear un nuevo thread para el topic actual
 router.get('/foro/:topicId/nuevo', (req, res) => {
-    res.render('./sections/foro/newThread');
+    res.render('./sections/foro/newThread', {topicId: req.params.topicId});
 });
 
 // POST - Crea el nuevo thread y lo agrega a la base de datos. Redirecciona al nuevo thread
@@ -81,7 +83,7 @@ router.post('/foro/:topicId/nuevo', (req, res) => {
             }
 
             // add extra data to the new thread and save
-            thread.date = moment().calendar();
+            thread.date = moment().format('ll');
             thread.save();
             // add new thread to the topic and save
             topic.threads.push(thread);
@@ -137,7 +139,7 @@ router.post('/foro/:topicId/threadId', (req, res) => {
                 }
 
                 // add extra data to the new comment and save
-                comment.date = moment().calendar();
+                comment.date = moment().format('ll');
                 comment.save();
                 // add new comment to the thread and save
                 thread.comments.push(comment);

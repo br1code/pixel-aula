@@ -1,4 +1,49 @@
+<% include ../../partials/header %>
+
 <div class="container">
-    <h1><%= topic.title %></h1>
-    <p><%= topic.description %></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron text-center">
+                <h1 class="display-3 mb-3"><%= topic.title %></h1>
+                <p class="lead"><%= topic.description %></p>
+                <hr class="my-3">
+                <p class="mt-3">Puedes crear subtemas de discusión</p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="/foro/<%= topic._id %>/nuevo">Nuevo Subtema</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h2 class="display-5">Buscar temas</h2>
+        </div>
+        <div class="col-md-8">
+            <% topic.threads.forEach(thread => { %>
+                <div class="card my-3">
+                    <div class="card-header">
+                        <h3 class="card-title my-1">
+                            <%= thread.title %>
+                            
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2">
+                            <% if (thread.comments.length) { %>
+                                Este subtema ha sido discutido <%= thread.comments.length %> veces
+                            <% } else { %>
+                                Este subtema todavía no ha tenido discusión
+                            <% } %>
+                            <span class="float-right"><%= thread.date %></span>
+                        </h6>
+                        <p class="card-text"><%= thread.body %></p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="/foro/<%= topic._id %>/<%= thread._id %>" class="card-link text-primary">Leer</a>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
 </div>

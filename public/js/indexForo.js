@@ -17,7 +17,7 @@
     
     $(document).ready(function() {
         $('.badge').each(function() {
-            $(this).addClass("badge-danger");
+            $(this).addClass("badge-primary");
         });
     });
     

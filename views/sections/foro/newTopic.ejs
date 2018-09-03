@@ -1,8 +1,8 @@
 <% include ../../partials/header %>
 
-<div class="container my-3 mx-auto" style="max-width: 450px;min-height: 800px">
-    <form id="myForm" style="max-width: 330px;margin: 0 auto;" action="/foro/nuevo" method="POST">
-        <h1 class="display-4 text-center mt-5">Proponer un nuevo tema</h1>
+<div class="container my-3 mx-auto" style="max-width: 450px;min-height: 720px">
+    <form id="myForm" style="max-width: 350px;margin: 0 auto;" action="/foro/nuevo" method="POST">
+        <h1 class="display-4 text-center my-5">Proponer un nuevo tema</h1>
 
         <div class="form-group my-3">
             <input type="text" class="form-control" placeholder="Nombre" name="topic[title]" required autofocus spellcheck="false" autocomplete="off">
@@ -11,11 +11,11 @@
         
 
         <div class="form-group my-3">
-            <textarea id="descripcion" class="form-control" name="topic[description]" rows="2" placeholder="Descripción" required autofocus spellcheck="false" autocomplete="off"></textarea>
+            <textarea id="descripcion" class="form-control" name="topic[description]" rows="3" placeholder="Descripción" required autofocus spellcheck="false" autocomplete="off"></textarea>
             <small class="form-text text-muted">¿De qué se hablará en este nuevo tema?</small>
         </div>
 
-        <div class="form-group mt-5">
+        <div class="form-group mt-3">
             <select class="form-control" id="tags">
                 <option value="" selected disabled hidden>Etiquetas</option>
                 <option>Superior</option>
@@ -30,7 +30,7 @@
     
         <div id="tagList" class="my-3 text-center"></div>
 
-        <button type="submit" class="btn btn-danger btn-block btn-sm mt-3">Enviar</button>
+        <button type="submit" class="btn btn-primary btn-block btn-sm mt-3">Enviar</button>
 
         <div class="text-center">
             <a href="/foro"><button type="button" class="btn btn-link">Volver</button></a>
