@@ -28,7 +28,7 @@
         <div class="col-md-8">
             <% topics.forEach(topic => { %>
                     <div class="card my-3" fulldata="<%= topic.title %> <%= topic.description %> <%= topic.tags.join(' ') %>">
-                        <div class="card-header">
+                        <div class="card-header bg-light">
                             <h3 class="card-title my-1"><%= topic.title %></h3>
                         </div>
                         <div class="card-body">
@@ -41,7 +41,7 @@
                             <p class="card-text"><%= topic.description %></p>
 
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer bg-light">
                             <a href="/foro/<%= topic._id %>" class="card-link text-primary">Ingresar</a>
                             <a href="/foro/<%= topic._id %>/nuevo" class="card-link float-right text-primary">Agregar Subtema</a>
                         </div>
