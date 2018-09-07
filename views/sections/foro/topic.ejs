@@ -25,19 +25,18 @@
                     <div class="card-header bg-light">
                         <h3 class="card-title my-1">
                             <%= thread.title %>
-                            
                         </h3>
                     </div>
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2">
+                        <h6 class="card-subtitle mb-3">
                             <% if (thread.comments.length) { %>
                                 Este subtema ha sido discutido <%= thread.comments.length %> veces
                             <% } else { %>
                                 Este subtema todavía no ha tenido discusión
                             <% } %>
-                            <span class="float-right"><%= thread.date %></span>
+                            <span class="float-right mb-3"><%= thread.date %></span>
                         </h6>
-                        <p class="card-text"><%= thread.body %></p>
+                        <p class="card-text"><%= thread.body.substr(0, 195) %> ...</p>
                     </div>
                     <div class="card-footer text-center bg-light">
                         <a href="/foro/<%= topic._id %>/<%= thread._id %>" class="card-link text-primary">Leer</a>

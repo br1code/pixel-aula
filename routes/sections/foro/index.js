@@ -103,20 +103,22 @@ router.get('/foro/:topicId/:threadId', (req, res) => {
             return res.redirect('/foro');
         }
 
-        Thread.findById(req.params.threadId, (err, thread) => {
-            if (err || !thread) {
-                // TODO: Handle error properly
-                console.log('Error: ' + err);
-                return res.redirect('/foro/' + req.params.topicId);
-            }
+        Thread.findById(req.params.threadId)
+            .populate('comments')
+            .exec((err, thread) => {
+                if (err || !thread) {
+                    // TODO: Handle error properly
+                    console.log('Error: ' + err);
+                    return res.redirect('/foro/' + req.params.topicId);
+                }
 
-            res.render('./sections/foro/thread', {thread});
-        })
-    })
-    
-})
+                res.render('./sections/foro/thread', {topic, thread});
+            });
+    });
+});
+
 // POST - Crea un nuevo comment y lo agrega a la base de datos, redirecciona al mismo thread
-router.post('/foro/:topicId/threadId', (req, res) => {
+router.post('/foro/:topicId/:threadId/comentario', (req, res) => {
     Topic.findById(req.params.topicId, (err, topic) => {
         if (err || !topic) {
             // TODO: Handle error properly
