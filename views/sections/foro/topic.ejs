@@ -3,13 +3,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="jumbotron text-center">
+            <div class="jumbotron text-center bg-white">
                 <h1 class="display-3 mb-3"><%= topic.title %></h1>
                 <p class="lead"><%= topic.description %></p>
                 <hr class="my-3">
                 <p class="mt-3">Puedes crear subtemas de discusión</p>
                 <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="/foro/<%= topic._id %>/nuevo">Nuevo Subtema</a>
+                    <a class="btn btn-primary" href="/foro/<%= topic._id %>/nuevo">Nuevo Subtema</a>
                 </p>
             </div>
         </div>
