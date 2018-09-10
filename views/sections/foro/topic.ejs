@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="jumbotron text-center bg-white">
+            <div class="jumbotron text-center">
                 <h1 class="display-3 mb-3"><%= topic.title %></h1>
                 <p class="lead"><%= topic.description %></p>
                 <hr class="my-3">
@@ -18,10 +18,14 @@
     <div class="row">
         <div class="col-md-4 text-center">
             <h2 class="display-5">Buscar temas</h2>
+            <div class="form-group">
+                <input type="text" id="search" class="form-control" placeholder="Título">
+                <small class="form-text text-muted">Busca el tema por su título</small>
+            </div>
         </div>
         <div class="col-md-8">
             <% topic.threads.forEach(thread => { %>
-                <div class="card my-3">
+                <div class="card my-3" full-data="<%= thread.title %>">
                     <div class="card-header bg-light">
                         <h3 class="card-title my-1">
                             <%= thread.title %>
@@ -46,3 +50,15 @@
         </div>
     </div>
 </div>
+
+<% include ../../partials/scripts %>
+<script src="/js/thread.js"></script>
+
+<div class="footer">
+    <div class="container">
+        <p class="float-right"><a href="/foro">Volver a todos los temas</a></p>
+        <p>2018 Br1code - Escuela Urquiza &middot; <a href="/licencias">Licencias</a></p>
+    </div>
+</div>
+
+<% include ../../partials/footer %>

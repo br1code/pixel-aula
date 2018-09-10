@@ -15,12 +15,6 @@
         return string.toLowerCase();
     }
     
-    $(document).ready(function() {
-        $('.badge').each(function() {
-            $(this).addClass("badge-primary");
-        });
-    });
-    
     $('#search').on('input', function() {
         let textSearch = getCleanedString($(this).val());
         // remove white spaces too
@@ -29,10 +23,10 @@
         // prevent filter without any search
         if (!textSearch) return $('.card').show();
         
-        // filter each topic to show or hide
+        // filter each thread to show or hide
         $('.card').each(function() {
-            let topicData = getCleanedString($(this).attr('full-data'));
-            if (haveCoincidences(topicData, textSearch)) {
+            let threadData = getCleanedString($(this).attr('full-data'));
+            if (haveCoincidences(threadData, textSearch)) {
                 $(this).show();
             } else {
                 $(this).hide();
@@ -40,5 +34,3 @@
         });
     });
 })();
-
-

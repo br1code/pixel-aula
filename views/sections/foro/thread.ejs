@@ -1,38 +1,49 @@
 <% include ../../partials/header %>
 
 <div class="container">
-        <div class="bg-white rounded box-shadow my-3">
-                <h2 class="display-4 text-center my-2"><%= thread.title %></h2 text-center>
-                <h5 class="display-6 text-center my-2"><%= topic.title %> - <%= thread.date %></h5><hr>
-                <div class="card-body">
-                    <p><%= thread.body %></p>
+    <div class="rounded box-shadow my-3">
+        <h2 class="display-4 text-center my-2"><%= thread.title %></h2 text-center>
+        <h5 class="display-6 text-center my-2"><%= topic.title %> - <%= thread.date %></h5><hr>
+        <div class="card-body">
+            <p><%= thread.body %></p>
+        </div>
+    </div>
+    <!-- Comments -->
+    <% if (thread.comments.length) { %>
+        <div class="my-3 p-3 rounded box-shadow">
+            <h6 class="border-bottom border-gray pb-2 mb-0">Comentarios</h6>
+            <% thread.comments.forEach(comment => { %>
+                <div class="media text-muted py-2">
+                    <i class="fas fa-square fa-2x mr-2 my-1" color-data="<%= comment.color %>"></i>
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong><%= comment.date %></strong><br>
+                        <%= comment.body %>
+                    </p>
                 </div>
-            </div>
-            <!-- Comments -->
-            <% if (thread.comments.length) { %>
-                <div class="my-3 p-3 bg-white rounded box-shadow">
-                    <h6 class="border-bottom border-gray pb-2 mb-0">Comentarios</h6>
-                    <% thread.comments.forEach(comment => { %>
-                        <div class="media text-muted py-2">
-                            <img class="mr-2 rounded" style="width: 32px; height: 32px;" src="./img/avatar.png">
-                            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                                <strong><%= comment.date %></strong><br>
-                                <%= comment.body %>
-                            </p>
-                        </div>
-                    <% }); %>
+            <% }); %>
+        </div>
+    <% } %>
+    <!-- New comment -->
+    <div class="bg-white rounded box-shadow mt-4 mb-3 p-3">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Deja un comentario</h6>
+        <div class="card-body">
+            <form action="/foro/<%= topic._id %>/<%= thread._id %>/comentario" method="POST">
+                <div class="form-group">
+                    <textarea name="comment[body]" class="form-control rounded" rows="3"></textarea>
                 </div>
-            <% } %>
-            <!-- New comment -->
-            <div class="bg-white rounded box-shadow mt-4 mb-3 p-3">
-                <h6 class="border-bottom border-gray pb-2 mb-0">Deja un comentario</h6>
-                <div class="card-body">
-                    <form action="/foro/<%= topic._id %>/<%= thread._id %>/comentario" method="POST">
-                        <div class="form-group">
-                            <textarea name="comment[body]" class="form-control rounded" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-sm">Comentar</button>
-                    </form>
-                </div>
-            </div>
+                <button type="submit" class="btn btn-primary btn-sm">Comentar</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+<div class="footer">
+    <div class="container">
+        <p class="float-right"><a href="/foro/<%= topic._id %>">Volver al tema</a></p>
+        <p>2018 Br1code - Escuela Urquiza &middot; <a href="/licencias">Licencias</a></p>
+    </div>
+</div>
+
+<% include ../../partials/scripts %>
+<script src="./js/comments.js"></script>
+<% include ../../partials/footer %>

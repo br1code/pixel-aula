@@ -1,114 +1,143 @@
 <% include ./partials/header %>
 
-<div class="container fluid text-center" id="home">
-    <div class="jumbotron"> <!-- Header -->
-        <h1 class="display-3">
-            PixelAula
-            <span><img src="./img/game.png"></span>
-        </h1>
-        <p class="lead my-3">
-            Es una plataforma de E-Learning totalmente libre y gratuita con juegos y 
-            actividades, las cuales serán desarrolladas por alumnos de la Esc. 
-            Superior Nº 49 "Cap. Gral. J.J. Urquiza".
-        </p>
-        <p class="lead">
-            <a href="#features" class="btn btn-danger btn-lg">Conocer más</a>
-        </p>
-    </div>
-    <h1 class="display-2 my-5" id="secciones">Elige tu nivel</h2>
-    <div class="row secciones"> <!-- Sections -->
-        <div class="col-lg-3 mb-5">
-            <a href="/inicial-primario">
-                <img class="seccion-img" src="./img/inicial.png">
-                <h2 class="display-4">Inicial y Primario</h2>
-            </a>
-        </div>
-        <div class="col-lg-3 mb-5">
-            <a href="/secundario-tecnico">
-                <img class="seccion-img" src="./img/primario.png">
-                <h2 class="display-4">Secundario y Técnico</h2>
-            </a> 
-        </div>
-        <div class="col-lg-3 mb-5">
-            <a href="/terciario-universitario">
-                <img class="seccion-img" src="./img/secundario.png">
-                <h2 class="display-4">Terciario y Universitario</h2>
-            </a>
-        </div>
-        <div class="col-lg-3 mb-5">
-            <a href="/practicas-profesionalizantes">
-                <img class="seccion-img" src="./img/tecnico.png">
-                <h2 class="display-4">Prácticas Prof</h2>
-            </a>
-        </div>
-    </div> <!-- End Sections -->
+<div id="myCarousel" class="carousel slide" data-rite="carousel">
 
-    <!-- Features -->
-    <hr class="mb-5">
-    <div class="row" id="features">
-        <div class="col-lg-8 my-auto">
-            <h2 class="lead display-4">Aprende mientras te diviertes</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla vestibulum id 
-                ligula porta felis euismod semper. Praesent commodo cursus magna.</p>
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
+            <div class="container">
+                <div class="carousel-caption text-left">
+                    <h1>Pixel Aula</h1>
+                    <p>Primera explicación del proyecto con una imagen de fondo</p>
+                    <p><a href="#" class="btn btn-lg btn-primary" role="button">Primer link</a></p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-4 my-3">
-                <img class="feature-img" src="./img/student.png">
+
+        <div class="carousel-item">
+            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Pixel Aula</h1>
+                    <p>Otra explicación del proyecto con otra imagen de fondo</p>
+                    <p><a href="#" class="btn btn-lg btn-primary" role="button">Segundo link</a></p>
+                </div>
+            </div>
         </div>
+
+        <div class="carousel-item">
+            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
+            <div class="container">
+                <div class="carousel-caption text-right">
+                    <h1>Pixel Aula</h1>
+                    <p>Otra explicación mas del proyecto o información de la Urquiza con otra imagen de fondo</p>
+                    <p><a href="#" class="btn btn-lg btn-primary" role="button">Tercer link</a></p>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <hr class="my-5">
+
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    
+</div>
+
+<div class="container marketing">
+
     <div class="row">
-        <div class="col-lg-8 my-auto order-lg-2">
-            <h2 class="lead display-4">Realiza tests para ver cuanto sabes</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla vestibulum id 
-                ligula porta felis euismod semper. Praesent commodo cursus magna.</p>
+
+        <div class="col-lg-3">
+            <img src="./img/inicial-primario.png" width="140" height="140">
+            <h2>Nivel Inicial y Primario</h2>
+            <p>Breve explicación del contenido de esta sección</p>
+            <p><a class="btn btn-outline-secondary" role="button" href="/inicial-primario">Ingresar</a></p>
         </div>
-        <div class="col-lg-4 my-3 order-lg-1">
-            <img class="feature-img" src="./img/test.png">
+
+        <div class="col-lg-3">
+            <img src="./img/secundario-tecnico.png" width="140" height="140">
+            <h2>Secundario y Técnico</h2>
+            <p>Breve explicación del contenido de esta sección</p>
+            <p><a class="btn btn-outline-secondary" role="button" href="/secundario-tecnico">Ingresar</a></p>
+        </div>
+
+        <div class="col-lg-3">
+            <img src="./img/terciario-universitario.png" width="140" height="140">
+            <h2>Terciario y Universitario</h2>
+            <p>Breve explicación del contenido de esta sección</p>
+            <p><a class="btn btn-outline-secondary" role="button" href="/terciario-universitario">Ingresar</a></p>
+        </div>
+
+        <div class="col-lg-3">
+            <img src="./img/practicas-profesionalizantes.png" width="140" height="140">
+            <h2>Prácticas Profesionalizantes</h2>
+            <p>Breve explicación del contenido de esta sección</p>
+            <p><a class="btn btn-outline-secondary" role="button" href="/practicas-profesionalizantes">Ingresar</a></p>
+        </div>
+
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Primer feature del proyecto. <span class="text-muted">Te llamará la atención.</span></h2>
+            <p class="lead">Explicación de la feature. Recomiendo escribir más de 20 palabras.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="./img/feature-1.png">
         </div>
     </div>
-    <hr class="my-5">
-    <div class="row">
-        <div class="col-lg-8 my-auto">
-            <h2 class="lead display-4">Preparate para tus examenes</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla vestibulum id 
-                ligula porta felis euismod semper. Praesent commodo cursus magna.</p>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Segunda feature del proyecto. <span class="text-muted">Míralo por ti mismo.</span></h2>
+            <p class="lead">Explicación de la feature. Recomiendo escribir más de 20 palabras.</p>
         </div>
-        <div class="col-lg-4 my-3">
-                <img class="feature-img" src="./img/study.png">
-        </div>
-    </div>
-    <hr class="my-5">
-    <div class="row">
-        <div class="col-lg-8 my-auto order-lg-2">
-            <h2 class="lead display-4">Ingresa desde cualquier dispositivo</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla vestibulum id 
-                ligula porta felis euismod semper. Praesent commodo cursus magna.</p>
-        </div>
-        <div class="col-lg-4 my-3 order-lg-1">
-            <img class="feature-img" src="./img/mobile.png">
+        <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="./img/feature-2.png">
         </div>
     </div>
-    <hr class="my-5">
-    <div class="row">
-        <div class="col-lg-8 my-auto">
-            <h2 class="lead display-4">Compartelo con tus compañeros</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla vestibulum id 
-                ligula porta felis euismod semper. Praesent commodo cursus magna.</p>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Tercer feature del proyecto. <span class="text-muted">Jaque mate, te hemos convencido.</span></h2>
+            <p class="lead">Explicación de la feature. Recomiendo escribir más de 20 palabras.</p>
         </div>
-        <div class="col-lg-4 my-3">
-                <img class="feature-img" src="./img/share.png">
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="./img/feature-3.png"">
         </div>
     </div>
-    <!-- End Features -->
-    <hr class="my-5">
-    <div class="linkWithoutStyle">
-        <a href="#secciones">
-            <h1 class="display-3 my-5 ">Comenzar a jugar</h2>
-        </a>
-    </div>
+
+    <hr class="featurette-divider">
 
 </div>
 
+<div class="footer">
+    <div class="container">
+        <p class="float-right"><a href="#">Volver al principio</a></p>
+        <p>2018 Br1code - Escuela Urquiza &middot; <a href="/licencias">Licencias</a></p>
+    </div>
+</div>
+
+
 <% include ./partials/scripts %>
-    <script src="./js/index.js"></script>
 <% include ./partials/footer %>

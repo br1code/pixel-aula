@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="jumbotron text-center bg-white">
+            <div class="jumbotron text-center">
                 <h1 class="display-3 mb-3">Bienvenido al Foro de PixelAula</h1>
                 <p class="lead">Es un foro de discusiones sobre temas académicos para alumnos de nivel superior y universitario.</p>
                 <hr class="my-3">
@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-8">
             <% topics.forEach(topic => { %>
-                    <div class="card my-3" fulldata="<%= topic.title %> <%= topic.description %> <%= topic.tags.join(' ') %>">
+                    <div class="card my-3" full-data="<%= topic.title %> <%= topic.description %> <%= topic.tags.join(' ') %>">
                         <div class="card-header bg-light">
                             <h3 class="card-title my-1"><%= topic.title %></h3>
                         </div>
@@ -50,5 +50,15 @@
         </div>
     </div>
 </div>
+
 <% include ../../partials/scripts %>
 <script src="/js/indexForo.js"></script>
+
+<div class="footer">
+    <div class="container">
+        <p class="float-right"><a href="/">Volver a la página principal</a></p>
+        <p>2018 Br1code - Escuela Urquiza &middot; <a href="/licencias">Licencias</a></p>
+    </div>
+</div>
+
+<% include ../../partials/footer %>

@@ -63,7 +63,14 @@ router.get('/foro/:topicId', (req, res) => {
 
 // GET - Formulario para crear un nuevo thread para el topic actual
 router.get('/foro/:topicId/nuevo', (req, res) => {
-    res.render('./sections/foro/newThread', {topicId: req.params.topicId});
+    Topic.findById(req.params.topicId, (err, topic) => {
+        if (err || !topic) {
+            // TODO: Handle error properly
+            console.log('Error: ' + err);
+            return res.redirect('/foro');
+        }
+        res.render('./sections/foro/newThread', {topic});
+    });
 });
 
 // POST - Crea el nuevo thread y lo agrega a la base de datos. Redirecciona al nuevo thread
@@ -142,6 +149,7 @@ router.post('/foro/:topicId/:threadId/comentario', (req, res) => {
 
                 // add extra data to the new comment and save
                 comment.date = moment().format('ll');
+                comment.color = selectRandomColor();
                 comment.save();
                 // add new comment to the thread and save
                 thread.comments.push(comment);
@@ -152,5 +160,10 @@ router.post('/foro/:topicId/:threadId/comentario', (req, res) => {
         });
     });
 });
+
+function selectRandomColor() {
+    let colors = ['#0E7C7B', '#D81E5B', '#E28413', '#6153CC', '#E84855', '#AA4465', '#A755C2', '#21897E', '#540D6E'];
+    return colors[Math.floor(Math.random()*colors.length)];
+}
 
 module.exports = router;
