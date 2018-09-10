@@ -34,9 +34,9 @@
                     <div class="card-body">
                         <h6 class="card-subtitle mb-3">
                             <% if (thread.comments.length) { %>
-                                Este subtema ha sido discutido <%= thread.comments.length %> veces
+                                Comentarios: <%= thread.comments.length %>
                             <% } else { %>
-                                Este subtema todavía no ha tenido discusión
+                                No hay comentarios
                             <% } %>
                             <span class="float-right mb-3"><%= thread.date %></span>
                         </h6>
