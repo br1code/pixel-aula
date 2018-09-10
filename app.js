@@ -20,7 +20,8 @@ const app = express();
 // CONFIG -----------------------------------------------
 
 // MongoDB configuration
-mongoose.connect('mongodb://localhost/pixelaula', { useNewUrlParser: true});
+// mongoose.connect('mongodb://localhost/pixelaula', { useNewUrlParser: true});
+mongoose.connect('mongodb://pixel-aula-dev:justfordevelopment18@ds151402.mlab.com:51402/pixelaula-dev', { useNewUrlParser: true});
 
 // Express configuration
 app.set('view engine', 'ejs');
