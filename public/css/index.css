@@ -92,7 +92,7 @@ body {
 
 @media (max-width: 62em) {
   .featurette-image {
-    max-width: 384px;
+    max-width: 256px;
     display: block;
     margin-top: 2em;
   }
