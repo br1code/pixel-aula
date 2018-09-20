@@ -91,6 +91,7 @@ body {
   .marketing .description {
     min-height: 72px;
   }
+
 }
 
 @media (max-width: 62em) {
@@ -98,6 +99,10 @@ body {
     max-width: 256px;
     display: block;
     margin-top: 2em;
+  }
+
+  .featurette-divider {
+    margin: 2.5rem 0; /* Space out the Bootstrap <hr> more */
   }
 
 }
