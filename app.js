@@ -9,7 +9,6 @@ const express                               = require('express'),
 const indexRoutes                           = require('./routes/index');
 const inicialPrimarioRoutes                 = require('./routes/sections/inicial-primario');
 const secundarioTecnicoRoutes               = require('./routes/sections/secundario-tecnico');
-const terciarioUniversitarioRoutes          = require('./routes/sections/terciario-universitario');
 const practicasProfesionalizantesRoutes     = require('./routes/sections/practicas-profesionalizantes');
 const foroRoutes                            = require('./routes/sections/foro');
 
@@ -35,7 +34,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(indexRoutes);
 app.use(inicialPrimarioRoutes);
 app.use(secundarioTecnicoRoutes);
-app.use(terciarioUniversitarioRoutes);
 app.use(practicasProfesionalizantesRoutes);
 app.use(foroRoutes);
 

@@ -52,7 +52,6 @@ body {
   margin-left: .75rem;
 }
 
-
 /* Featurettes
 ------------------------- */
 
@@ -88,12 +87,17 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
+
+  .marketing .description {
+    min-height: 72px;
+  }
 }
 
 @media (max-width: 62em) {
   .featurette-image {
-    max-width: 256px;
+    max-width: 320px;
     display: block;
     margin-top: 2em;
   }
+
 }
