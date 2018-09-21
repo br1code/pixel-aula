@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center mb-3">
             <h2 class="display-5">Buscar temas</h2>
             <div class="form-group">
                 <input type="text" id="search" class="form-control" placeholder="Nombre o Etiqueta">
@@ -41,9 +41,8 @@
                             <p class="card-text"><%= topic.description %></p>
 
                         </div>
-                        <div class="card-footer bg-light">
+                        <div class="card-footer bg-light text-center">
                             <a href="/foro/<%= topic._id %>" class="card-link btn btn-secondary btn-sm">Ingresar</a>
-                            <a href="/foro/<%= topic._id %>/nuevo" class="card-link float-right btn btn-secondary btn-sm">Agregar Subtema</a>
                         </div>
                     </div>
             <% }) %>
