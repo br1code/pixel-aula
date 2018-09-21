@@ -119,6 +119,10 @@ body {
     margin-top: 10rem;
   }
 
+  .error {
+    margin-top: 10rem;
+  }
+
 }
 
 @media (max-width: 62em) {
@@ -133,7 +137,11 @@ body {
   }
 
   .success-image {
-    max-width: 192px;
+    max-width: 160px;
+  }
+
+  .error-image {
+    max-width: 160px;
   }
 
 }

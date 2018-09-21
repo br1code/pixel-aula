@@ -39,7 +39,7 @@ app.use(foroRoutes);
 
 // Handling missed/wrong page
 app.get('*', (req, res) => {
-    res.render('error');
+    res.render('error', {backUrl: '/'});
 });
 
 // Server listening
