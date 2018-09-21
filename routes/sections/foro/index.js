@@ -76,18 +76,19 @@ router.get('/foro/:topicId/nuevo', (req, res) => {
 
 // POST - Crea el nuevo thread y lo agrega a la base de datos. Redirecciona al nuevo thread
 router.post('/foro/:topicId/nuevo', (req, res) => {
-    Topic.findById(req.params.topicId, (err, topic) => {
+    let topicId = req.params.topicId;
+    Topic.findById(topicId, (err, topic) => {
         if (err || !topic) {
             // TODO: Handle error properly
             console.log('Error: ' + err);
-            return res.redirect('/foro/' + req.params.topicId + '/nuevo');
+            return res.redirect('/foro/' + topicId + '/nuevo');
         }
         
         Thread.create(req.body.thread, (err, thread) => {
             if (err) {
                 // TODO: Handle error properly
                 console.log('Error: ' + err);
-                return res.redirect('/foro/' + req.params.topicId);
+                return res.redirect('/foro/' + topicId);
             }
 
             // add extra data to the new thread and save
@@ -97,7 +98,7 @@ router.post('/foro/:topicId/nuevo', (req, res) => {
             topic.threads.push(thread);
             topic.save();
 
-            res.redirect('/foro/' + req.params.topicId + '/' + thread._id);
+            res.redirect('/foro/' + topicId + '/' + thread._id);
         });
     });
 });
@@ -129,25 +130,27 @@ router.get('/foro/:topicId/:threadId', (req, res) => {
 
 // POST - Crea un nuevo comment y lo agrega a la base de datos, redirecciona al mismo thread
 router.post('/foro/:topicId/:threadId/comentario', (req, res) => {
-    Topic.findById(req.params.topicId, (err, topic) => {
+    let topicId = req.params.topicId;
+    let threadId = req.params.threadId;
+    Topic.findById(topicId, (err, topic) => {
         if (err || !topic) {
             // TODO: Handle error properly
             console.log('Error: ' + err);
             return res.redirect('/foro');
         }
 
-        Thread.findById(req.params.threadId, (err, thread) => {
+        Thread.findById(threadId, (err, thread) => {
             if (err || !thread) {
                 // TODO: Handle error properly
                 console.log('Error: ' + err);
-                return res.redirect('/foro/' + req.params.topicId);
+                return res.redirect('/foro/' + topicId);
             }
 
             Comment.create(req.body.comment, (err, comment) => {
                 if (err) {
                     // TODO: Handle error properly
                     console.log('Error: ' + err);
-                    return res.redirect('/foro/' + req.params.topicId + '/' + req.params.threadId);
+                    return res.redirect('/foro/' + topicId + '/' + threadId);
                 }
 
                 // add extra data to the new comment and save
@@ -158,7 +161,7 @@ router.post('/foro/:topicId/:threadId/comentario', (req, res) => {
                 thread.comments.push(comment);
                 thread.save();
 
-                res.redirect('/foro/' + req.params.topicId + '/' + req.params.threadId);
+                res.redirect('/foro/' + topicId + '/' + threadId);
             });
         });
     });
