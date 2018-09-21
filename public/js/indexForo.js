@@ -17,7 +17,7 @@
     
     $(document).ready(function() {
         $('.badge').each(function() {
-            $(this).addClass("badge-primary");
+            $(this).addClass("badge-secondary");
         });
     });
     

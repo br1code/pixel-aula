@@ -6,7 +6,7 @@ const router = express.Router();
 
 // INDEX - Show index page
 router.get('/practicas-profesionalizantes', (req, res) => {
-    res.render('./sections/practicas-profesionalizantes');
+    res.render('./sections/practicas-profesionalizantes', {backUrl: '/'});
 });
 
 module.exports = router;

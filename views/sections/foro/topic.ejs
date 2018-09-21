@@ -10,7 +10,7 @@
                 <hr class="my-3">
                 <p class="mt-3">Puedes crear subtemas de discusión</p>
                 <p class="lead">
-                    <a class="btn btn-primary" href="/foro/<%= topic._id %>/nuevo">Nuevo Subtema</a>
+                    <a class="btn btn-dark" href="/foro/<%= topic._id %>/nuevo">Nuevo Subtema</a>
                 </p>
             </div>
         </div>
@@ -44,21 +44,11 @@
                         <p class="card-text"><%= thread.body.substr(0, 195) %> ...</p>
                     </div>
                     <div class="card-footer text-center bg-light">
-                        <a href="/foro/<%= topic._id %>/<%= thread._id %>" class="card-link text-primary">Leer</a>
+                        <a href="/foro/<%= topic._id %>/<%= thread._id %>" class="card-link btn btn-secondary btn-sm">Leer</a>
                     </div>
                 </div>
             <% }); %>
         </div>
-    </div>
-</div>
-
-<div class="footer">
-    <div class="container">
-        <p class="float-right"><a href="/foro">Volver a temas</a></p>
-        <p>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.terciariourquiza.edu.ar"/>Urquiza</a> - 
-            <a href="/licencias">Licencias</a>
-        </p>
     </div>
 </div>
 

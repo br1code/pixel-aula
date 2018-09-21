@@ -19,13 +19,13 @@ router.get('/foro', (req, res) => {
             return res.render('./sections/foro');
         }
 
-        res.render('./sections/foro', {topics});
+        res.render('./sections/foro', {topics, backUrl: '/'});
     });
 });
 
 // GET - Formulario para proponer un nuevo topic
 router.get('/foro/nuevo', (req, res) => {
-    res.render('./sections/foro/newTopic');
+    res.render('./sections/foro/newTopic', {backUrl: '/foro'});
 });
 
 // POST - Envia la solicitud del nuevo topic y redirecciona a /foro/nuevo-exito
@@ -43,7 +43,7 @@ router.post('/foro/nuevo', (req, res) => {
 
 // GET - Muestra un mensaje indicando que el tema será aprobado o no en 24 hs
 router.get('/foro/nuevo-exito', (req, res) => {
-    res.render('./sections/foro/success');
+    res.render('./sections/foro/success', {backUrl: '/foro'});
 });
 
 // GET - Muestra un topic con todos sus threads y un link para crear un thread
@@ -57,19 +57,20 @@ router.get('/foro/:topicId', (req, res) => {
                 return res.redirect('/foro');
             }
 
-            res.render('./sections/foro/topic', {topic});
+            res.render('./sections/foro/topic', {topic, backUrl: '/foro'});
         });
 });
 
 // GET - Formulario para crear un nuevo thread para el topic actual
 router.get('/foro/:topicId/nuevo', (req, res) => {
-    Topic.findById(req.params.topicId, (err, topic) => {
+    let topicId = req.params.topicId;
+    Topic.findById(topicId, (err, topic) => {
         if (err || !topic) {
             // TODO: Handle error properly
             console.log('Error: ' + err);
             return res.redirect('/foro');
         }
-        res.render('./sections/foro/newThread', {topic});
+        res.render('./sections/foro/newThread', {topic, backUrl: `/foro/${topicId}`});
     });
 });
 
@@ -103,23 +104,25 @@ router.post('/foro/:topicId/nuevo', (req, res) => {
 
 // GET - Muestra un thread con todos sus comments y un formulario para crear un comment
 router.get('/foro/:topicId/:threadId', (req, res) => {
-    Topic.findById(req.params.topicId, (err, topic) => {
+    let topicId = req.params.topicId;
+    let threadId = req.params.threadId;
+    Topic.findById(topicId, (err, topic) => {
         if (err || !topic) {
             // TODO: Handle error properly
             console.log('Error: ' + err);
             return res.redirect('/foro');
         }
 
-        Thread.findById(req.params.threadId)
+        Thread.findById(threadId)
             .populate('comments')
             .exec((err, thread) => {
                 if (err || !thread) {
                     // TODO: Handle error properly
                     console.log('Error: ' + err);
-                    return res.redirect('/foro/' + req.params.topicId);
+                    return res.redirect('/foro/' + topicId);
                 }
 
-                res.render('./sections/foro/thread', {topic, thread});
+                res.render('./sections/foro/thread', {topic, thread, backUrl: `/foro/${topicId}`});
             });
     });
 });
