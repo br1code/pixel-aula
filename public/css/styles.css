@@ -115,6 +115,10 @@ body {
     min-height: 72px;
   }
 
+  .success {
+    margin-top: 10rem;
+  }
+
 }
 
 @media (max-width: 62em) {
@@ -126,6 +130,10 @@ body {
 
   .featurette-divider {
     margin: 2.5rem 0; /* Space out the Bootstrap <hr> more */
+  }
+
+  .success-image {
+    max-width: 192px;
   }
 
 }
