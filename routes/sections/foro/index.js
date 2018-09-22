@@ -16,7 +16,7 @@ router.get('/foro', (req, res) => {
         if (err) {
             // TODO: Handle error properly
             console.log('Error: ' + err);
-            return res.render('./sections/foro');
+            return res.redirect('/');
         }
 
         res.render('./sections/foro', {topics, backUrl: '/'});
