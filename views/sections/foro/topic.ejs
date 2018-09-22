@@ -4,13 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="jumbotron text-center mt-4">
+            <div class="jumbotron text-center mt-4 shadow">
                 <h1 class="display-5 mb-3"><%= topic.title %></h1>
                 <p class="lead"><%= topic.description %></p>
                 <hr class="my-3">
                 <p class="mt-3">Puedes crear subtemas de discusión</p>
                 <p class="lead">
-                    <a class="btn btn-dark" href="/foro/<%= topic._id %>/nuevo">Nuevo Subtema</a>
+                    <a class="btn btn-dark shadow" href="/foro/<%= topic._id %>/nuevo">Nuevo Subtema</a>
                 </p>
             </div>
         </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-8">
             <% topic.threads.forEach(thread => { %>
-                <div class="card my-3" full-data="<%= thread.title %>">
+                <div class="card my-3 shadow" full-data="<%= thread.title %>">
                     <div class="card-header bg-light">
                         <h3 class="card-title my-1">
                             <%= thread.title %>
@@ -44,7 +44,7 @@
                         <p class="card-text"><%= thread.body.substr(0, 195) %> ...</p>
                     </div>
                     <div class="card-footer text-center bg-light">
-                        <a href="/foro/<%= topic._id %>/<%= thread._id %>" class="card-link btn btn-secondary btn-sm">Leer</a>
+                        <a href="/foro/<%= topic._id %>/<%= thread._id %>" class="card-link btn btn-secondary btn-sm shadow">Leer</a>
                     </div>
                 </div>
             <% }); %>

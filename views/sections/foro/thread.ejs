@@ -2,16 +2,18 @@
 <% include ../../partials/nav %>
 
 <div class="container">
-    <div class="rounded box-shadow my-3">
-        <h2 class="display-4 text-center my-2"><%= thread.title %></h2 text-center>
-        <h5 class="display-6 text-center my-2"><%= topic.title %> - <%= thread.date %></h5><hr>
+    <div class="rounded box-shadow my-3 border shadow rounded">
+        <h2 class="display-4 text-center my-2"><%= thread.title %></h2>
+        <h4 class="display-6 text-center"><%= topic.title %></h4>
+        <h6 class="display-6 text-center my-2"><%= thread.date %></h6>
+        <hr class="mx-3 mb-0">
         <div class="card-body">
             <p><%= thread.body %></p>
         </div>
     </div>
     <!-- Comments -->
     <% if (thread.comments.length) { %>
-        <div class="my-3 p-3 rounded box-shadow">
+        <div class="my-3 p-3 border shadow rounded">
             <h6 class="border-bottom border-gray pb-2 mb-0">Comentarios</h6>
             <% thread.comments.forEach(comment => { %>
                 <div class="media text-muted py-2">
@@ -25,7 +27,7 @@
         </div>
     <% } %>
     <!-- New comment -->
-    <div class="bg-white rounded box-shadow mt-4 mb-3 p-3">
+    <div class="bg-white border shadow rounded mt-4 mb-3 p-3">
         <h6 class="border-bottom border-gray pb-2 mb-0">Deja un comentario</h6>
         <div class="card-body">
             <form action="/foro/<%= topic._id %>/<%= thread._id %>/comentario" method="POST">
