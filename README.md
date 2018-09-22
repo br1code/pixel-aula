@@ -6,9 +6,9 @@ Es una plataforma de E-Learning totalmente libre y gratuita con juegos y activid
 
 
 ## To Do
----
 
 - [x] Stop using Bootstrap Templates
 - [ ] Remove JQuery from all the code
 - [ ] Replace callbacks with promises from the routing logic
+- [ ] Add email logic
 - [ ] Update To Do list (lol)
