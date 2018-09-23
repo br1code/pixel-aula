@@ -37,6 +37,12 @@ router.post('/foro/nuevo', (req, res) => {
             return res.redirect('/foro/nuevo');
         }
 
+        // validate empty carrer
+        if (!topic.carrer) {
+            topic.carrer = 'Cualquier carrera';
+            topic.save();
+        }
+
         res.redirect('/foro/nuevo-exito');
     });
 });

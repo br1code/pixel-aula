@@ -8,12 +8,6 @@
         form.append($(input));
     }
     
-    function selectBadgeClass(tagNameSelected) {
-        let badges = {Superior: 'primary', Universitario: 'success', Consultas: 'danger',
-            Noticias: 'warning', Discusión: 'info', Otros: 'dark', Default: 'primary'};
-        return badges[tagNameSelected] || badges.Default;
-    }
-    
     function getTagsSelected() {
         let tagsSelected = [];
         let currentTags = $('.badge');
@@ -44,8 +38,7 @@
         // prevent duplicate tags
         if (tagWasAlreadySelected(tagsSelected, currentTagSelected)) return;
 
-        let badgeClass = selectBadgeClass(currentTagSelected);
-        let spanTag = `<span style='margin: auto .10rem;' class='badge badge-${badgeClass}'>${currentTagSelected}</span>`;
+        let spanTag = `<span style='margin: auto .10rem;' class='badge badge-primary'>${currentTagSelected}</span>`;
         $('#tagList').append(spanTag);
         addDeleteTagEvents();
     });
@@ -56,6 +49,10 @@
         for (let i = 0; i < tagsSelected.length; i++) {
             addHidden($(this), `topic[tags][${i}]`, tagsSelected[i]);
         }
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip({trigger: 'focus'});
     });
     
 })();

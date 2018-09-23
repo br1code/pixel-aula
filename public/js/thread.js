@@ -17,8 +17,6 @@
     
     $('#search').on('input', function() {
         let textSearch = getCleanedString($(this).val());
-        // remove white spaces too
-        textSearch = textSearch.replace(/ /g, '');
 
         // prevent filter without any search
         if (!textSearch) return $('.card').show();

@@ -15,16 +15,9 @@
         return string.toLowerCase();
     }
     
-    $(document).ready(function() {
-        $('.badge').each(function() {
-            $(this).addClass("badge-secondary");
-        });
-    });
     
     $('#search').on('input', function() {
         let textSearch = getCleanedString($(this).val());
-        // remove white spaces too
-        textSearch = textSearch.replace(/ /g, '');
 
         // prevent filter without any search
         if (!textSearch) return $('.card').show();

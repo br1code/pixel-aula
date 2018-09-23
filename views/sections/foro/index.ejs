@@ -27,15 +27,20 @@
         </div>
         <div class="col-md-8">
             <% topics.forEach(topic => { %>
-                    <div class="card my-3 shadow rounded" full-data="<%= topic.title %> <%= topic.description %> <%= topic.tags.join(' ') %>">
+                    <div class="card my-3 shadow rounded" full-data="<%= topic.title %> <%= topic.description %> <%= topic.carrer %> <%= topic.tags.join(' ') %>">
                         <div class="card-header bg-light">
                             <h3 class="card-title my-1"><%= topic.title %></h3>
                         </div>
                         <div class="card-body">
                             <h6 class="card-subtitle mb-2">
-                                Subtemas creados: <%= topic.threads.length %>
+                                Carrera: <span class="small"><%= topic.carrer %></span>
+                            </h6>
+                            <h6 class="card-subtitle mb-2">
+                                Publicaciones: <span class="small"><%= topic.threads.length %></span>
+                            </h6>
+                            <h6 class="card-subtitle my-2">
                                 <% topic.tags.forEach(tag => { %>
-                                    <span style='margin: auto .15rem;' class='badge float-right'><%= tag %></span>
+                                    <span style='margin-right: .35rem;' class='badge badge-secondary'><%= tag %></span>
                                 <% }); %>
                             </h6>
                             <p class="card-text"><%= topic.description %></p>
