@@ -2,13 +2,25 @@
 <% include ../../partials/nav %>
 
 <div class="container my-3 py-3 mx-auto bg-light">
-    <div id="search">
-        <form id="searchTest" class="mx-auto px-1" style="max-width: 300px;">
-            <h1 class="display-4 text-center my-3">Realizar una prueba</h1>
+    <div id="searchDiv">
+        <form id="searchForm" class="mx-auto " style="max-width: 450px;">
+            <h2 class="display-4 text-center my-3">Realizar una prueba</h2>
 
             <div class="form-group">
-                <input id="testID" type="text" class="form-control" placeholder="Clave">
+                <input id="searchInput" type="text" class="form-control" placeholder="Clave">
                 <small class="form-text text-muted">Ingresa la clave de la prueba que te dió tu profesor</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-sm my-3">Ingresar</button>
+        </form>
+    </div>
+    <div id="nameDiv">
+        <form id="nameForm" class="mx-auto" style="max-width: 450px;">
+            <h2 class="display-4 text-center my-3">Ingresá tu nombre</h2>
+
+            <div class="form-group">
+                <input id="nameInput" type="text" class="form-control" placeholder="Nombre">
+                <small class="form-text text-muted">Ingresá tu nombre para que tu profesor pueda evaluarte</small>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block btn-sm my-3">Ingresar</button>

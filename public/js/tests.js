@@ -1,13 +1,60 @@
-'use strict';
+(function() {
+    "use strict";
 
-$('#searchTest').on('submit', function(e) {
-    e.preventDefault();
+    // global vars
+    var searchDiv;
+    var searchInput;
+    var searchForm;
+    var nameDiv;
+    var nameInput;
+    var nameForm;
 
-    let testID = $('#testID').val();
-    let url = 'http://localhost:3000/pruebas/realizar/' + testID;
+    function init() {
+        // setup DOM elements
+        searchDiv = $('#searchDiv');
+        searchInput = $('#searchInput');
+        searchForm = $('#searchForm');
+        nameDiv = $('#nameDiv');
+        nameInput = $('#nameInput');
+        nameForm = $('#nameForm');
 
-    // get test vía /pruebas/realizar/id
-    $.get(url).done().fail();
+        // initialize UI
+        searchDiv.show();
+        nameDiv.hide();
 
-    console.log('Sending request..');
-});
+        // setup events
+        searchForm.on('submit', searchTest)
+    }
+
+    function searchTest(evt) {
+        evt.preventDefault();
+        
+        // TODO: validate input
+        let testID = searchInput.val();
+        getTestByID(testID, startTest, searchAgain);
+    }
+
+    function startTest(data) {
+        if (!data.test) return searchAgain(data);
+        // TODO: hide searchForm, show testGame, initialize data
+        searchDiv.hide();
+        nameDiv.show();
+        console.log(data);
+    }
+
+    function searchAgain(data){ 
+        // TODO: show message error properly
+        alert(data.error);
+        searchInput.val('').focus();
+    }
+
+    // API utils
+    function getTestByID(id, doneCallback, failCallback) {
+        // TODO: replace local url
+        let url = 'http://localhost:3000/pruebas/realizar/' + id;
+        $.get(url).done(doneCallback).fail(failCallback);
+    }
+
+
+    init();
+})();

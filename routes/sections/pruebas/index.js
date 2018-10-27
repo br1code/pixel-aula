@@ -41,9 +41,9 @@ router.get('/pruebas/realizar', (req, res) => {
 
 // GET /pruebas/realizar/:id - Permite realizar una prueba buscandola por su id
 router.get('/pruebas/realizar/:id', (req, res) => {
-    testsLogic.findTest(req, (err, test) => {
+    testsLogic.findTest(req.params.id, (err, test) => {
         if (err) {
-            return res.json({test: null});
+            return res.json(err);
         }
         res.json(test);
     });

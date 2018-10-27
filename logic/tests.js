@@ -21,7 +21,7 @@ function createTest(test, callback) {
 // Send only the questions without the data of the correct answers
 function findTest(id, callback) {
     Test.findById(id, (err, test) => {
-        if (err || !test) return callback(err);
+        if (err || !test) return callback({test: '123', error: 'La prueba no fue encontrada'});
         callback(null, test);
     });
 }
