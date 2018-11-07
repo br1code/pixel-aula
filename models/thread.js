@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = include('mongoose');
 
 let threadSchema = new mongoose.Schema({
     title: String,

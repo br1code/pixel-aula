@@ -1,6 +1,5 @@
-"use strict";
-
 (function() {
+    "use strict";
 
     // add hidden inputs with a name-value pair to send extra data
     function addHidden(form, name, value) {
@@ -11,9 +10,11 @@
     function getTagsSelected() {
         let tagsSelected = [];
         let currentTags = $('.badge');
+
         currentTags.each(function() {
             tagsSelected.push($(this).text());
         });
+        
         return tagsSelected;
     }
     
@@ -30,6 +31,10 @@
         return tagList.indexOf(tagSelected) !== -1;
     }
 
+    function createSpanTag(value) {
+        return `<span style='margin: auto .10rem;' class='badge badge-primary'>${value}</span>`;
+    }
+
     // create selected tags with its appropriate color
     $('#tags').on('change', function() {
         let currentTagSelected = $(this).val();
@@ -38,7 +43,7 @@
         // prevent duplicate tags
         if (tagWasAlreadySelected(tagsSelected, currentTagSelected)) return;
 
-        let spanTag = `<span style='margin: auto .10rem;' class='badge badge-primary'>${currentTagSelected}</span>`;
+        let spanTag = createSpanTag(currentTagSelected);
         $('#tagList').append(spanTag);
         addDeleteTagEvents();
     });

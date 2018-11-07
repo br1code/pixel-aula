@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = include('mongoose');
 
 let resultSchema = new mongoose.Schema({
     name: String,

@@ -1,5 +1,6 @@
 (function() {
     "use strict";
+    
     let contactForm = $('#contactForm');
     
     contactForm.on('submit', function(e) {

@@ -2,8 +2,8 @@
 <% include ./partials/nav %>
 
 <div class="container mt-3" style="max-width: 450px;margin: 0 auto;">
-    <h4 class="text-center"></h4>
     <form id="contactForm">
+
         <h3 class="display-4 text-center">Contacto</h3>
         <p class="lead text-center">Somos alumnos de la carrera Desarrollo de Software de la Esc. Superior Nº 49  "Cap. Gral. J.J. Urquiza" - Nivel Terciario de Rosario</p>
         <p class="lead text-center">Si tienes alguna consulta o alguna sugerencia sobre el proyecto, no dudes en hablar con nosotros.</p>
@@ -24,32 +24,26 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-block btn-sm">Enviar</button>
-
-        <!-- Button trigger modal -->
       
-      <!-- Modal -->
-      <div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="successLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="successLabel">Mensaje enviado</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Gracias por contactarte con nosotros. En breve leeremos tu mensaje.
-            </div>
-            <div class="modal-footer">
-              <button id="closeMessage" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+		<!-- Modal -->
+		<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="successLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="successLabel">Mensaje enviado</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">Gracias por contactarte con nosotros. En breve leeremos tu mensaje.</div>
+					<div class="modal-footer">
+						<button id="closeMessage" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
     </form>
-
-    
 </div>
 
 <% include ./partials/footer %>

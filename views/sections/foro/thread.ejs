@@ -2,6 +2,8 @@
 <% include ../../partials/nav %>
 
 <div class="container">
+
+    <!-- Thread -->
     <div class="rounded box-shadow my-3 border shadow rounded">
         <h5 class=" text-center mt-3 mb-2"><%= thread.title %></h5>
         <p class="lead text-center mb-0"><span class="small"><%= topic.title %></span></p>
@@ -9,6 +11,7 @@
         <hr class="mx-3 mb-0">
         <div class="card-body"><p><%= thread.body %></p></div>
     </div>
+
     <!-- Comments -->
     <% if (thread.comments.length) { %>
         <div class="my-3 p-3 border shadow rounded">
@@ -24,6 +27,7 @@
             <% }); %>
         </div>
     <% } %>
+    
     <!-- New comment -->
     <div class="bg-white border shadow rounded mt-4 mb-3 p-3">
         <h6 class="border-bottom border-gray pb-2 mb-0">Deja un comentario</h6>

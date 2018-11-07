@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = include('mongoose');
 
 let practiceSchema = new mongoose.Schema({
     type: String, // offer or request

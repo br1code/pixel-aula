@@ -1,6 +1,5 @@
-"use strict";
-
 (function() {
+    "use strict";
     
     function haveCoincidences(strA, strB) {
         return strA.indexOf(strB) !== -1;
@@ -14,7 +13,6 @@
         string = string.replace(/ú/gi, 'u');
         return string.toLowerCase();
     }
-    
     
     $('#search').on('input', function() {
         let textSearch = getCleanedString($(this).val());
@@ -32,6 +30,7 @@
             }
         });
     });
+    
 })();
 
 

@@ -1,8 +1,8 @@
 'use strict';
 
-const express               = require('express'),
-    moment                  = require('moment'),
-    Practice                = require('../../../models/practice');
+const express               = include('express'),
+    moment                  = include('moment'),
+    Practice                = include('models/practice');
 
 const router = express.Router();
 
@@ -18,11 +18,8 @@ router.get('/practicas-profesionalizantes', (req, res) => {
 // GET - Index ofertas, muestra las ofertas y un link para cargar una oferta
 router.get('/practicas-profesionalizantes/ofertas', (req, res) => {
     Practice.find({type: 'offer'}, (err, practices) => {
-        if (err) {
-            // TODO: Handle error properly
-            console.log('Error: ' + err);
-            return res.redirect('/practicas-profesionalizantes');
-        }
+        if (err) return res.redirect('/practicas-profesionalizantes');
+
         res.render('./sections/practicas-profesionalizantes/offers', {
             practices: practices,
             backUrl: '/practicas-profesionalizantes'
@@ -33,11 +30,7 @@ router.get('/practicas-profesionalizantes/ofertas', (req, res) => {
 // GET - Index pedidos, muestras los pedidos y un link para realizar un pedido
 router.get('/practicas-profesionalizantes/pedidos', (req, res) => {
     Practice.find({type: 'request'}, (err, practices) => {
-        if (err) {
-            // TODO: Handle error properly
-            console.log('Error: ' + err);
-            return res.redirect('/practicas-profesionalizantes');
-        }
+        if (err) return res.redirect('/practicas-profesionalizantes');
 
         res.render('./sections/practicas-profesionalizantes/requests', {
             practices: practices,
@@ -64,11 +57,7 @@ router.get('/practicas-profesionalizantes/pedidos/nuevo', (req, res) => {
 router.post('/practicas-profesionalizantes/ofertas/nuevo', (req, res) => {
     // TODO: validate data from the server
     Practice.create(req.body.practice, (err, practice) => {
-        if (err) {
-            // TODO: Handle error properly
-            console.log('Error: ' + err);
-            return res.redirect('/practicas-profesionalizantes/ofertas/nuevo');
-        }
+        if (err) return res.redirect('/practicas-profesionalizantes/ofertas/nuevo');
 
         // add extra data to the new practice and save
         practice.date = moment().format('ll');
@@ -83,11 +72,7 @@ router.post('/practicas-profesionalizantes/ofertas/nuevo', (req, res) => {
 router.post('/practicas-profesionalizantes/pedidos/nuevo', (req, res) => {
     // TODO: validate data from the server
     Practice.create(req.body.practice, (err, practice) => {
-        if (err) {
-            // TODO: Handle error properly
-            console.log('Error: ' + err);
-            return res.redirect('/practicas-profesionalizantes/pedidos/nuevo');
-        }
+        if (err) return res.redirect('/practicas-profesionalizantes/pedidos/nuevo');
 
         // add extra data to the new practice and save
         practice.data = moment().format('ll');
@@ -101,11 +86,7 @@ router.post('/practicas-profesionalizantes/pedidos/nuevo', (req, res) => {
 // GET - Muestra una oferta
 router.get('/practicas-profesionalizantes/ofertas/:offerId', (req, res) => {
     Practice.findById(req.params.offerId, (err, practice) => {
-        if (err || !practice) {
-            // TODO: Handle error properly
-            console.log('Error: ' + err);
-            return res.redirect('practicas-profesionalizantes/ofertas');
-        }
+        if (err || !practice) return res.redirect('practicas-profesionalizantes/ofertas');
 
         res.render('./sections/practicas-profesionalizantes/offer', {
             offer: practice,
@@ -117,11 +98,7 @@ router.get('/practicas-profesionalizantes/ofertas/:offerId', (req, res) => {
 // GET - Muestra un pedido
 router.get('/practicas-profesionalizantes/pedidos/:requestId', (req, res) => {
     Practice.findById(req.params.requestId, (err, practice) => {
-        if (err || !practice) {
-            // TODO: Handle error properly
-            console.log('Error: ' + err);
-            return res.redirect('practicas-profesionalizantes/pedidos');
-        }
+        if (err || !practice) return res.redirect('practicas-profesionalizantes/pedidos');
 
         res.render('./sections/practicas-profesionalizantes/request', {
             request: practice,
@@ -147,11 +124,7 @@ router.post('/practicas-profesionalizantes/pedidos/:requestId/contacto', (req, r
 // GET - Muestra un mensaje indicando que la solicitud de contacto de una oferta fue envíada
 router.get('/practicas-profesionalizantes/ofertas/:offerId/contacto-exito', (req, res) => {
     Practice.findById(req.params.offerId, (err, practice) => {
-        if (err || !practice) {
-            // TODO: Handle error properly
-            console.log('Error: ' + err);
-            return res.redirect('/practicas-profesionalizantes/ofertas');
-        }
+        if (err || !practice) return res.redirect('/practicas-profesionalizantes/ofertas');
 
         res.render('./sections/practicas-profesionalizantes/success', {
             practice: practice,
@@ -163,11 +136,7 @@ router.get('/practicas-profesionalizantes/ofertas/:offerId/contacto-exito', (req
 // GET - Muestra un mensaje indicando que la solicitud de contacto de un pedido fue envíada
 router.get('/practicas-profesionalizantes/pedidos/:requestId/contacto-exito', (req, res) => {
     Practice.findById(req.params.offerId, (err, practice) => {
-        if (err || !practice) {
-            // TODO: Handle error properly
-            console.log('Error: ' + err);
-            return res.redirect('/practicas-profesionalizantes/pedidos');
-        }
+        if (err || !practice) return res.redirect('/practicas-profesionalizantes/pedidos');
 
         res.render('./sections/practicas-profesionalizantes/success', {
             practice: practice,

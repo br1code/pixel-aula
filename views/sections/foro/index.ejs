@@ -1,7 +1,6 @@
 <% include ../../partials/header %>
 <% include ../../partials/nav %>
 
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -18,6 +17,7 @@
     </div>
 
     <div class="row">
+
         <div class="col-md-4 text-center mb-3">
             <h2 class="display-5">Buscar temas</h2>
             <div class="form-group">
@@ -25,12 +25,15 @@
                 <small class="form-text text-muted">Busca el tema por su contenido o sus etiquetas</small>
             </div>
         </div>
+
         <div class="col-md-8">
             <% topics.forEach(topic => { %>
                     <div class="card my-3 shadow rounded" full-data="<%= topic.title %> <%= topic.description %> <%= topic.carrer %> <%= topic.tags.join(' ') %>">
+
                         <div class="card-header bg-light">
                             <h3 class="card-title my-1"><%= topic.title %></h3>
                         </div>
+
                         <div class="card-body">
                             <h6 class="card-subtitle mb-2">
                                 Carrera: <span class="small"><%= topic.carrer %></span>
@@ -44,11 +47,12 @@
                                 <% }); %>
                             </h6>
                             <p class="card-text"><%= topic.description %></p>
-
                         </div>
+
                         <div class="card-footer bg-light text-center">
                             <a href="/foro/<%= topic._id %>" class="card-link btn btn-secondary btn-sm shadow">Ingresar</a>
                         </div>
+
                     </div>
             <% }) %>
         </div>

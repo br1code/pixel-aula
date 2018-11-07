@@ -1,7 +1,6 @@
-"use strict";
-
 (function() {
-    
+    "use strict";
+
     function haveCoincidences(strA, strB) {
         return strA.indexOf(strB) !== -1;
     }
@@ -24,11 +23,11 @@
         // filter each thread to show or hide
         $('.card').each(function() {
             let threadData = getCleanedString($(this).attr('full-data'));
-            if (haveCoincidences(threadData, textSearch)) {
+
+            if (haveCoincidences(threadData, textSearch))
                 $(this).show();
-            } else {
+            else
                 $(this).hide();
-            }
         });
     });
 })();
