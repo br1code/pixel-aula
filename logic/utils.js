@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const http = require('http');
 
@@ -12,14 +12,25 @@ function setGlobalInclude(dirPath) {
     }
 }
 
+function getURLDomainName() {
+    let port = process.env.PORT || 3000;
+    let localURL = 'localhost:' + port;
+    return process.env.URL_DOMAIN_NAME || localURL;
+}
+
+function getDBLocalURL() {
+    return 'mongodb://localhost/pixelaula';
+}
+
 function keepServerAlive() {
-    let minutes = 5;
+    let minutes = process.env.KEEP_SERVER_ALIVE_INTERVAL || 5;
     let interval = minutes * 60000;
-    let url = process.env.URL_DOMAIN_NAME;
+    let url = getURLDomainName();
     setInterval(() => http.get(url), interval);
 }
 
 module.exports = {
     setGlobalInclude,
+    getDBLocalURL,
     keepServerAlive
 };

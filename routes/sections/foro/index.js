@@ -1,10 +1,10 @@
 'use strict';
 
 const express                               = include('express'),
-    moment                                  = include('moment'),
-    Topic                                   = include('models/topic'),
-    Thread                                  = include('models/thread'),
-    Comment                                 = include('models/comment');
+      moment                                = include('moment'),
+      Topic                                 = include('models/topic'),
+      Thread                                = include('models/thread'),
+      Comment                               = include('models/comment');
 
 const router = express.Router();
 

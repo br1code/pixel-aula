@@ -1,8 +1,8 @@
 'use strict';
 
 const express                               = include('express'),
-    moment                                  = include('moment'),
-    Practice                                = include('models/practice');
+      moment                                = include('moment'),
+      Practice                              = include('models/practice');
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.get('/practicas-profesionalizantes', (req, res) => {
 
 // GET - Index ofertas, muestra las ofertas y un link para cargar una oferta
 router.get('/practicas-profesionalizantes/ofertas', (req, res) => {
-    Practice.find({type: 'offer'}, (err, practices) => {
+    Practice.find({type: practiceTypes.Offer}, (err, practices) => {
         if (err) return res.redirect('/practicas-profesionalizantes');
 
         res.render('./sections/practicas-profesionalizantes/offers', {
@@ -29,7 +29,7 @@ router.get('/practicas-profesionalizantes/ofertas', (req, res) => {
 
 // GET - Index pedidos, muestras los pedidos y un link para realizar un pedido
 router.get('/practicas-profesionalizantes/pedidos', (req, res) => {
-    Practice.find({type: 'request'}, (err, practices) => {
+    Practice.find({type: practiceTypes.Request}, (err, practices) => {
         if (err) return res.redirect('/practicas-profesionalizantes');
 
         res.render('./sections/practicas-profesionalizantes/requests', {

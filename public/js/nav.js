@@ -1,5 +1,5 @@
 (function() {
-    "use strict";
+    'use strict';
 
     function getPathActive() {
         let paths = ['inicial-primario', 'secundario-tecnico', 'foro', 'practicas-profesionalizantes'];

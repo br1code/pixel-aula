@@ -1,5 +1,5 @@
 (function() {
-    "use strict";
+    'use strict';
     
     function haveCoincidences(strA, strB) {
         return strA.indexOf(strB) !== -1;

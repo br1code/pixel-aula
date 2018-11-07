@@ -6,22 +6,22 @@ const utils                                 = require('./logic/utils');
 utils.setGlobalInclude(__dirname);
 
 const express                               = include('express'),
-    bodyParser                              = include("body-parser"),
-    mongoose                                = include('mongoose');
+      bodyParser                            = include('body-parser'),
+      mongoose                              = include('mongoose');
 
 const indexRoutes                           = include('routes/index'),
-    inicialPrimarioRoutes                   = include('routes/sections/inicial-primario'),
-    secundarioTecnicoRoutes                 = include('routes/sections/secundario-tecnico'),
-    practicasProfesionalizantesRoutes       = include('routes/sections/practicas-profesionalizantes'),
-    foroRoutes                              = include('routes/sections/foro');
+      inicialPrimarioRoutes                 = include('routes/sections/inicial-primario'),
+      secundarioTecnicoRoutes               = include('routes/sections/secundario-tecnico'),
+      practicasProfesionalizantesRoutes     = include('routes/sections/practicas-profesionalizantes'),
+      foroRoutes                            = include('routes/sections/foro');
 
-const PORT = process.env.PORT || 3000;
-
-const app = express();
+const PORT                                  = process.env.PORT || 3000,
+      DB_URL                                = process.env.DB_URL || utils.getDBLocalURL();
 
 // MongoDB config
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true});
-// mongoose.connect('mongodb://localhost/pixelaula', { useNewUrlParser: true});
+mongoose.connect(DB_URL, { useNewUrlParser: true});
+
+const app = express();
 
 // Express config
 app.set('view engine', 'ejs');

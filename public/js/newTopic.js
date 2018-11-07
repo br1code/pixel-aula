@@ -1,5 +1,5 @@
 (function() {
-    "use strict";
+    'use strict';
 
     // add hidden inputs with a name-value pair to send extra data
     function addHidden(form, name, value) {

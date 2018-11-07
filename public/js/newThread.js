@@ -1,5 +1,5 @@
 (function() {
-    "use strict";
+    'use strict';
     
     $(function () {
         $('[data-toggle="tooltip"]').tooltip({trigger: 'focus'});
