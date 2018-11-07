@@ -19,7 +19,7 @@ const PORT                                  = process.env.PORT || 3000,
       DB_URL                                = process.env.DB_URL || utils.getDBLocalURL();
 
 // MongoDB config
-mongoose.connect(DB_URL, { useNewUrlParser: true});
+mongoose.connect(DB_URL, {useNewUrlParser: true});
 
 const app = express();
 
