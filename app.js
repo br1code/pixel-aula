@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // MongoDB config
-mongoose.connect('mongodb://pixel-aula-dev:justfordevelopment18@ds151402.mlab.com:51402/pixelaula-dev', { useNewUrlParser: true});
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true});
 // mongoose.connect('mongodb://localhost/pixelaula', { useNewUrlParser: true});
 
 // Express config

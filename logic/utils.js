@@ -15,7 +15,7 @@ function setGlobalInclude(dirPath) {
 function keepServerAlive() {
     let minutes = 5;
     let interval = minutes * 60000;
-    let url = 'http://pixelaula.herokuapp.com'; // use ENV vars
+    let url = process.env.URL_DOMAIN_NAME;
     setInterval(() => http.get(url), minutes);
 }
 
