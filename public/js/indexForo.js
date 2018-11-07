@@ -23,11 +23,10 @@
         // filter each topic to show or hide
         $('.card').each(function() {
             let topicData = getCleanedString($(this).attr('full-data'));
-            if (haveCoincidences(topicData, textSearch)) {
+            if (haveCoincidences(topicData, textSearch))
                 $(this).show();
-            } else {
+            else
                 $(this).hide();
-            }
         });
     });
     

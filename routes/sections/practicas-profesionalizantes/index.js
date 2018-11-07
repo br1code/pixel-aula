@@ -1,8 +1,8 @@
 'use strict';
 
-const express               = include('express'),
-    moment                  = include('moment'),
-    Practice                = include('models/practice');
+const express                               = include('express'),
+    moment                                  = include('moment'),
+    Practice                                = include('models/practice');
 
 const router = express.Router();
 

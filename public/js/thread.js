@@ -23,7 +23,6 @@
         // filter each thread to show or hide
         $('.card').each(function() {
             let threadData = getCleanedString($(this).attr('full-data'));
-
             if (haveCoincidences(threadData, textSearch))
                 $(this).show();
             else
