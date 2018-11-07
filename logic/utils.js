@@ -16,7 +16,7 @@ function keepServerAlive() {
     let minutes = 5;
     let interval = minutes * 60000;
     let url = 'http://pixelaula.herokuapp.com'; // use ENV vars
-    setInterval(() => http.get(url), 3000);
+    setInterval(() => http.get(url), minutes);
 }
 
 module.exports = {
