@@ -53,7 +53,7 @@ router.get('/practicas-profesionalizantes/pedidos/nuevo', (req, res) => {
     });
 });
 
-// POST - Crea la nueva oferta y redirecciona a la misma
+// POST - Crea la nueva oferta y redirecciona a la pagina de success
 router.post('/practicas-profesionalizantes/ofertas/nuevo', (req, res) => {
     // TODO: validate data from the server
     Practice.create(req.body.practice, (err, practice) => {
@@ -64,11 +64,11 @@ router.post('/practicas-profesionalizantes/ofertas/nuevo', (req, res) => {
         practice.type = practiceTypes.Offer;
         practice.save();
 
-        res.redirect('/practicas-profesionalizantes/ofertas/' + practice._id);
+        res.redirect('/practicas-profesionalizantes/ofertas/' + practice._id + '/nuevo-exito');
     });
 });
 
-// POST - Crea el nuevo pedido y redirecciona al mismo
+// POST - Crea el nuevo pedido y redirecciona a la pagina de success
 router.post('/practicas-profesionalizantes/pedidos/nuevo', (req, res) => {
     // TODO: validate data from the server
     Practice.create(req.body.practice, (err, practice) => {
@@ -79,13 +79,30 @@ router.post('/practicas-profesionalizantes/pedidos/nuevo', (req, res) => {
         practice.type = practiceTypes.Request;
         practice.save();
 
-        res.redirect('/practicas-profesionalizantes/pedidos/' + practice._id);
+        res.redirect('/practicas-profesionalizantes/pedidos/' + practice._id  + '/nuevo-exito');
+    });
+});
+
+// GET - Muestra un mensaje indicando que la oferta se ha creado, contiene link hacia la oferta
+router.get('/practicas-profesionalizantes/ofertas/:offerID/nuevo-exito', (req, res) => {
+    let offerID = req.params.offerID;
+    res.render('./sections/practicas-profesionalizantes/offerSuccess', {
+        offerID, backUrl: '/practicas-profesionalizantes/ofertas'
+    });
+});
+
+// GET - Muestra un mensaje indicando que el pedido se ha registrado, contiene link hacia el pedido
+router.get('/practicas-profesionalizantes/pedidos/:requestID/nuevo-exito', (req, res) => {
+    let requestID = req.params.requestID;
+    res.render('./sections/practicas-profesionalizantes/requestSuccess', {
+        requestID,
+        backUrl: '/practicas-profesionalizantes/pedidos'
     });
 });
 
 // GET - Muestra una oferta
-router.get('/practicas-profesionalizantes/ofertas/:offerId', (req, res) => {
-    Practice.findById(req.params.offerId, (err, practice) => {
+router.get('/practicas-profesionalizantes/ofertas/:offerID', (req, res) => {
+    Practice.findById(req.params.offerID, (err, practice) => {
         if (err || !practice) return res.redirect('practicas-profesionalizantes/ofertas');
 
         res.render('./sections/practicas-profesionalizantes/offer', {
@@ -96,8 +113,8 @@ router.get('/practicas-profesionalizantes/ofertas/:offerId', (req, res) => {
 });
 
 // GET - Muestra un pedido
-router.get('/practicas-profesionalizantes/pedidos/:requestId', (req, res) => {
-    Practice.findById(req.params.requestId, (err, practice) => {
+router.get('/practicas-profesionalizantes/pedidos/:requestID', (req, res) => {
+    Practice.findById(req.params.requestID, (err, practice) => {
         if (err || !practice) return res.redirect('practicas-profesionalizantes/pedidos');
 
         res.render('./sections/practicas-profesionalizantes/request', {
@@ -108,22 +125,22 @@ router.get('/practicas-profesionalizantes/pedidos/:requestId', (req, res) => {
 });
 
 // POST - Envía una solicitud de contacto de una oferta, redirecciona a una página de éxito
-router.post('/practicas-profesionalizantes/ofertas/:offerId/contacto', (req, res) => {
+router.post('/practicas-profesionalizantes/ofertas/:offerID/contacto', (req, res) => {
     // TODO: add email logic
-    let offerId = req.params.offerId;
-    res.redirect('/practicas-profesionalizantes/ofertas/' + offerId + '/contacto-exito');
+    let offerID = req.params.offerID;
+    res.redirect('/practicas-profesionalizantes/ofertas/' + offerID + '/contacto-exito');
 });
 
 // POST - Envía una solicitud de contacto de un pedido, redirecciona a una página de éxito
-router.post('/practicas-profesionalizantes/pedidos/:requestId/contacto', (req, res) => {
+router.post('/practicas-profesionalizantes/pedidos/:requestID/contacto', (req, res) => {
     // TODO: add email logic
-    let requestId = req.params.requestId;
-    res.redirect('/practicas-profesionalizantes/pedidos/' + requestId + '/contacto-exito');
+    let requestID = req.params.requestID;
+    res.redirect('/practicas-profesionalizantes/pedidos/' + requestID + '/contacto-exito');
 });
 
 // GET - Muestra un mensaje indicando que la solicitud de contacto de una oferta fue envíada
-router.get('/practicas-profesionalizantes/ofertas/:offerId/contacto-exito', (req, res) => {
-    Practice.findById(req.params.offerId, (err, practice) => {
+router.get('/practicas-profesionalizantes/ofertas/:offerID/contacto-exito', (req, res) => {
+    Practice.findById(req.params.offerID, (err, practice) => {
         if (err || !practice) return res.redirect('/practicas-profesionalizantes/ofertas');
 
         res.render('./sections/practicas-profesionalizantes/success', {
@@ -134,8 +151,8 @@ router.get('/practicas-profesionalizantes/ofertas/:offerId/contacto-exito', (req
 });
 
 // GET - Muestra un mensaje indicando que la solicitud de contacto de un pedido fue envíada
-router.get('/practicas-profesionalizantes/pedidos/:requestId/contacto-exito', (req, res) => {
-    Practice.findById(req.params.offerId, (err, practice) => {
+router.get('/practicas-profesionalizantes/pedidos/:requestID/contacto-exito', (req, res) => {
+    Practice.findById(req.params.offerID, (err, practice) => {
         if (err || !practice) return res.redirect('/practicas-profesionalizantes/pedidos');
 
         res.render('./sections/practicas-profesionalizantes/success', {

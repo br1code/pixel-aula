@@ -1,7 +1,48 @@
 <% include ../../partials/header %>
 
-<div class="container text-center">
-    <h1 class="display-5 mt-5">Crear nueva oferta de Práctica Profesionalizante</h1>
+<div class="container my-3 mx-auto" style="max-width: 450px;">
+    <form class="mx-auto" id="myForm" style="max-width: 350px;" action="/practicas-profesionalizantes/ofertas/nuevo" method="POST">
+
+        <h1 class="display-5 text-center">Crear nueva oferta de Práctica Profesionalizante</h1>
+
+        <div class="form-group my-3">
+            <input type="text" class="form-control" placeholder="Institución" name="practice[entity]" data-toggle="tooltip" data-placement="top" 
+            data-html="true" title="Ejemplo : <em>Escuela Urquiza</em>" required spellcheck="false" autocomplete="off">
+            <small class="form-text text-muted">¿A qué Institución perteneces?</small>
+        </div>
+
+        <div class="form-group my-3">
+            <textarea class="form-control" name="practice[description]" id="" rows="4" placeholder="Descripción" data-toggle="tooltip" data-placement="top" 
+            data-html="true" title="Ejemplo : <em>Somos alumnos de Desarrollo de Software. Buscamos realizar nuestra Práctica Profesionalizante, tenemos 
+            conocimientos en Desarrollo Web y Bases de Datos</em>" required spellcheck="false" autocomplete="off"></textarea>
+            <small class="form-text text-muted">¿De qué trata tu oferta?</small>
+        </div>
+
+        <div class="form-group my-3">
+            <select name="practice[level]" class="form-control" required spellcheck="false" autocomplete="off">
+                <option value="" selected disabled hidden>Elige una opción</option>
+                <option value="superior">Nivel Superior</option>
+                <option value="tecnico">Nivel Técnico</option>
+            </select>
+            <small class="form-text text-muted">¿Cuál es el nivel educativo?</small>
+        </div>
+
+        <div class="form-group my-3">
+            <input type="number" class="form-control" placeholder="Número de Teléfono" name="practice[phone]" data-toggle="tooltip" data-placement="top" 
+            data-html="true" title="Tranquilo, no revelaremos estos datos" required spellcheck="false" autocomplete="off">
+            <small class="form-text text-muted">¿Tienes un número de contacto?</small>
+        </div>
+
+        <div class="form-group my-3">
+            <input type="email" class="form-control" placeholder="Email" name="practice[email]" data-toggle="tooltip" data-placement="top" 
+            data-html="true" title="Tranquilo, no revelaremos estos datos" required spellcheck="false" autocomplete="off">
+            <small class="form-text text-muted">¿Tienes un email de contacto?</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-sm mt-3" required spellcheck="false" autocomplete="off">Crear</button>
+
+    </form>
 </div>
 
 <% include ../../partials/footer %>
+<script src="/js/newOffer.js"></script>

@@ -14,7 +14,7 @@ function setGlobalInclude(dirPath) {
 
 function getURLDomainName() {
     let port = process.env.PORT || 3000;
-    let localURL = 'localhost:' + port;
+    let localURL = 'http://localhost:' + port;
     return process.env.URL_DOMAIN_NAME || localURL;
 }
 
