@@ -16,7 +16,7 @@ function keepServerAlive() {
     let minutes = 5;
     let interval = minutes * 60000;
     let url = process.env.URL_DOMAIN_NAME;
-    setInterval(() => http.get(url), minutes);
+    setInterval(() => http.get(url), interval);
 }
 
 module.exports = {
