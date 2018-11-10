@@ -8,7 +8,7 @@ function setGlobalInclude(dirPath) {
 
     global.include = function(file) {
         if (file.indexOf('/') === -1) return require(file);
-        return require(abs_path('/' + file))
+        return require(abs_path('/' + file));
     }
 }
 

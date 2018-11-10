@@ -1,13 +1,13 @@
 const mongoose = include('mongoose');
 
 let practiceSchema = new mongoose.Schema({
-    type: String, // offer or request
-    entity: String, // school name or company name
+    type: String,
+    entity: String,
     description: String,
-    level: String, // offer: superior/tecnico
-    date: String, // when the practice was created
-    phone: String, // private
-    email: String // private
+    level: String,
+    date: String,
+    phone: String,
+    email: String
 });
 
 let practiceModel = mongoose.model('Practice', practiceSchema);

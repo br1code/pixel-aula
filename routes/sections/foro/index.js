@@ -10,7 +10,6 @@ const router = express.Router();
 
 moment.locale('es');
 
-// GET - Index del foro, muestra todos los topics y un link para proponer uno nuevo
 router.get('/foro', (req, res) => {
     Topic.find({}, (err, topics) => {
         if (err) return res.redirect('/');
@@ -18,12 +17,10 @@ router.get('/foro', (req, res) => {
     });
 });
 
-// GET - Formulario para proponer un nuevo topic
 router.get('/foro/nuevo', (req, res) => {
     res.render('./sections/foro/newTopic', {backUrl: '/foro'});
 });
 
-// POST - Envia la solicitud del nuevo topic y redirecciona a /foro/nuevo-exito
 router.post('/foro/nuevo', (req, res) => {
     Topic.create(req.body.topic, (err, topic) => {
         if (err) return res.redirect('/foro/nuevo');
@@ -38,12 +35,10 @@ router.post('/foro/nuevo', (req, res) => {
     });
 });
 
-// GET - Muestra un mensaje indicando que el tema será aprobado o no en 24 hs
 router.get('/foro/nuevo-exito', (req, res) => {
     res.render('./sections/foro/success', {backUrl: '/foro'});
 });
 
-// GET - Muestra un topic con todos sus threads y un link para crear un thread
 router.get('/foro/:topicId', (req, res) => {
     Topic.findById(req.params.topicId)
         .populate('threads')
@@ -53,7 +48,6 @@ router.get('/foro/:topicId', (req, res) => {
         });
 });
 
-// GET - Formulario para crear un nuevo thread para el topic actual
 router.get('/foro/:topicId/nuevo', (req, res) => {
     let topicId = req.params.topicId;
 
@@ -63,7 +57,6 @@ router.get('/foro/:topicId/nuevo', (req, res) => {
     });
 });
 
-// POST - Crea el nuevo thread y lo agrega a la base de datos. Redirecciona al nuevo thread
 router.post('/foro/:topicId/nuevo', (req, res) => {
     let topicId = req.params.topicId;
 
@@ -86,7 +79,6 @@ router.post('/foro/:topicId/nuevo', (req, res) => {
     });
 });
 
-// GET - Muestra un thread con todos sus comments y un formulario para crear un comment
 router.get('/foro/:topicId/:threadId', (req, res) => {
     let topicId = req.params.topicId;
     let threadId = req.params.threadId;
@@ -103,7 +95,6 @@ router.get('/foro/:topicId/:threadId', (req, res) => {
     });
 });
 
-// POST - Crea un nuevo comment y lo agrega a la base de datos, redirecciona al mismo thread
 router.post('/foro/:topicId/:threadId/comentario', (req, res) => {
     let topicId = req.params.topicId;
     let threadId = req.params.threadId;

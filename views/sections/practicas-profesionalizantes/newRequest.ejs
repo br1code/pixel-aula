@@ -1,6 +1,6 @@
 <% include ../../partials/header %>
 
-<div class="container my-3 mx-auto" style="max-width: 450px;">
+<div class="container my-5 mx-auto" style="max-width: 450px;">
     <form class="mx-auto" id="myForm" style="max-width: 350px;" action="/practicas-profesionalizantes/pedidos/nuevo" method="POST">
 
         <h3 class="display-6 text-center">Crear un Pedido de Práctica Profesionalizante</h3>
@@ -16,17 +16,6 @@
             data-html="true" title="Ejemplo : <em>Necesitamos estudiantes de Sistemas que den clases de computación a alumnos de primaria</em>" required 
             spellcheck="false" autocomplete="off"></textarea>
             <small class="form-text text-muted">¿Qué necesitan? ¿Cuál es la tarea a realizar?</small>
-        </div>
-
-        <div class="form-group my-3">
-            <select name="practice[level]" class="form-control" required spellcheck="false" autocomplete="off">
-                <option value="" selected disabled hidden>Elige una opción</option>
-                <option value="superior">Nivel Superior</option>
-                <option value="tecnico">Nivel Técnico</option>
-                <option value="universitario">Nivel Universitario</option>
-                <option value="cualquiera">Cualquier Nivel</option>
-            </select>
-            <small class="form-text text-muted">¿Qué nivel educativo deben tener los alumnos?</small>
         </div>
 
         <div class="form-group my-3">
