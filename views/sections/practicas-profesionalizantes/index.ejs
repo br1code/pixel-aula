@@ -2,33 +2,52 @@
 <% include ../../partials/nav %>
 
 <div class="container text-center">
-    <h1 class="display-5 mt-3">Prácticas Profesionalizantes</h1>
-    <p class="lead">Explicación de qué es una práctica profesionalizante</p>
-    <h3 class="display-5 my-3">¿Qué estás buscando?</h3>
+    <!-- <h1 class="display-5 my-3">Prácticas Profesionalizantes</h1>
+    <div>
+        <button type="button" class="btn btn-link m-3" data-toggle="modal" data-target="#explanation">
+            ¿Qué es una Práctica Profesionalizante?
+        </button>
+    </div> -->
 
-    <div class="row">
+    <div class="jumbotron my-3">
+        <h1 class="display-5">Prácticas Profesionalizantes</h1>
+        <p class="lead">Breve descripción de la sección</p>
+        <hr class="my-4">
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#explanation">
+            ¿Qué es una Práctica Profesionalizante?
+        </button>
+    </div>
 
-        <div class="col-lg-6">
-            <div class="jumbotron py-3 mb-3 shadow">
-                <div class="container">
-                    <h3 class="display-5">Somos una entidad</h3>
-                    <p class="lead">Buscamos alumnos que quieran realizar actividades como práctica profesionalizante.</p>
-                    <a class="btn btn-secondary btn-sm shadow" href="/practicas-profesionalizantes/pedidos">Ingresar</a>
-                </div>
+    <div class="modal fade" id="explanation" tabindex="-1" role="dialog" aria-labelledby="explanationTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="explanationTitle">¿Qué es una Práctica Profesionalizante?</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </div> 
-
-        <div class="col-lg-6">
-            <div class="jumbotron py-3 shadow">
-                <div class="container">
-                    <h3 class="display-5">Somos una escuela</h3>
-                    <p class="lead">Buscamos alguna entidad que necesite alumnos para realizar una práctica profesionalizante.</p>
-                    <a class="btn btn-secondary btn-sm shadow" href="/practicas-profesionalizantes/ofertas">Ingresar</a>
+            <div class="modal-body">
+                <p>
+                    Aquí irá la explicación de lo que es una Práctica Profesionalizante junto a ejemplos y demás. 
+                    A continuación veremos un video de ejemplo el cual será reemplazado por uno realizado por los alumnos
+                </p>
+                <div class="embed-responsive embed-responsive-16by9 my-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/S2IgbpEvees" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+                <p>El siguiente video fue tomado solo con el propósito de desarrollo de la página</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+            </div>
             </div>
         </div>
-         
     </div>
+
+    <a href="/practicas-profesionalizantes/pedidos" class="btn btn-primary m-3">Pedir una Práctica Profesionalizante</a>
+    <a href="/practicas-profesionalizantes/ofertas" class="btn btn-primary m-3">Ofrecer una Práctica Profesionalizante</a>
+
 </div>
 
 <% include ../../partials/footer %>
+<script src="/js/practicas-profesionalizantes/indexPractice.js"></script>
