@@ -16,4 +16,8 @@ router.get('/contacto', (req, res) => {
     res.render('contact', {backUrl: '/'});
 });
 
+router.get('/contribuyentes', (req, res) => {
+    res.render('contributors', {backUrl: '/'});
+});
+
 module.exports = router;

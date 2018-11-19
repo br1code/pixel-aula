@@ -2,7 +2,7 @@
     'use strict';
 
     function getPathActive() {
-        let paths = ['inicial-primario', 'secundario-tecnico', 'foro', 'practicas-profesionalizantes'];
+        let paths = ['inicial-primario', 'secundario-tecnico', 'foro', 'practicas-profesionalizantes', 'contribuyentes'];
         let currentPath = $(location).attr('pathname');
         let pathActive;
 
@@ -15,6 +15,8 @@
     }
 
     function setItemActive(pathActive) {
+        if (!pathActive) return;
+
         $('.nav-item').each(function() {
             let currentItem = $(this);
 

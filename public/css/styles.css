@@ -119,6 +119,13 @@ body {
     margin-top: 10rem;
   }
 
+  .carousel-item {
+    height: 100vh;
+  }
+  .carousel-item > img {
+    height: 100vh;
+  }
+
 }
 
 @media (max-width: 62em) {
@@ -141,10 +148,10 @@ body {
   }
 
   .carousel-item {
-    height: 24rem;
+    height: 28rem;
   }
   .carousel-item > img {
-    height: 24rem;
+    height: 28rem;
   }
 
 }
