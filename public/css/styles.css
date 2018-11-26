@@ -43,6 +43,11 @@ body {
   z-index: 10;
 }
 
+.carousel-caption.pixelaula {
+  bottom: 5rem;
+  z-index: 10;
+}
+
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 38rem;
@@ -119,6 +124,12 @@ body {
     margin-top: 10rem;
   }
 
+  .pixelaula h1 {
+    font-size: 6rem;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
 }
 
 @media (max-width: 62em) {
@@ -145,6 +156,12 @@ body {
   }
   .carousel-item > img {
     height: 26rem;
+  }
+
+  .pixelaula h1 {
+    font-size: 4.5rem;
+    font-weight: 300;
+    line-height: 1.2;
   }
 
 }
